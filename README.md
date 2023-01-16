@@ -1,1 +1,2 @@
 # PaprykarzSzczecinski-Project
+This repository is a simple web application project for the **web development** course. It is based on a [Bechdel Test](https://bechdeltest.com/), which measures the representation of women in film according to the following criteria: (1) it has to have at least two women in it, who (2) who talk to each other, about (3) something besides a man. Our **Bechdel Bot** allows the user to check if the movie of their choice passes or fails the test.
