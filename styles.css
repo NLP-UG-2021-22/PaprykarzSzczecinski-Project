@@ -5,10 +5,13 @@ body {
     background-color: #AE759F;
     margin: 2;
     padding: 0;
-    display: grid;
-    place-items: center;
-    align-content: center;
-    overflow-x: hidden;
+}
+
+#bot {
+  place-items: center;
+  display: grid;
+  align-content: center;
+  overflow-x: hidden;
 }
 
 .chat-container {
@@ -151,6 +154,11 @@ h5 {
     padding: 10px 15px;
     border: none;
   }
+
+  .sticky {
+    position: fixed !important;
+    top: 5px;
+  } 
   
   .openbtn:hover {
     background-color: #444;
