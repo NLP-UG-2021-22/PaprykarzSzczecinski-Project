@@ -1,23 +1,108 @@
-html {
-    background-color: #eee;
+@import url('https://fonts.googleapis.com/css2?family=Kalam&family=Rokkitt&display=swap');
+
+body {
+    height: 100%;
+    background-color: #AE759F;
+    margin: 2;
+    padding: 0;
+    display: grid;
+    place-items: center;
+    align-content: center;
+    overflow-x: hidden;
 }
 
-#chat2 .form-control {
-    border-color: transparent;
+.chat-container {
+    max-width: 500px;
+    height: 100vh;
+    max-height: 500px; 
+    overflow-x: hidden;
+    margin-top: 35px;
+    background: #D4CDF4;
+    border: 5px solid #55286F;
+    border-radius: 5%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+@media screen and (max-width: 600px) {
+    .chat-container {
+        position: relative;
+        margin-right: auto;
+        margin-left: auto;
+        overflow: hidden;
+        width: 100%;
+        max-height: 80%;
     }
-    
-#chat2 .form-control:focus {
-    border-color: transparent;
-    box-shadow: inset 0px 0px 0px 1px transparent;
 }
-    
-.divider:after,
-.divider:before {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background: #eee;
+
+.chat-title {
+    position: relative;
+    text-align: left;
+    border-bottom: 5px solid #55286F; 
+    height: 40px;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+h5 {
+    font-family: 'Kalam', cursive;
+    font-size: 20px;
+}
+
+.messages {
+    flex: 1 1 auto;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.messages-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 101%;
+    width: 100%;
+}
+
+.messages-box {
+    width: auto;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 5px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    border-top: 5px solid #55286F;
+}
+
+.message-submit {
+    border: 3px solid #55286F;
+    font-family: 'Kalam', cursive;
+    text-align: center;
+    transition: .2s ease-in-out;
+    margin-right: 10px;
+    margin-left: 5px;
+}
+
+.message-submit:hover {
+    background: #D8B4E2;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.message-submit:active {
+    background: #AE759F;
+}
+
+.message-input {
+    border: 3px solid #55286F;
+    margin-left: 5px;
+    width: 400px;
+}
+
 
 .sidebar {
     height: 100%; 
@@ -26,7 +111,8 @@ html {
     z-index: 1; 
     top: 0;
     left: 0;
-    background-color: #111; 
+    background-color: #111;
+    font-family: 'Kalam', cursive;
     overflow-x: hidden; 
     padding-top: 60px; 
     transition: 0.5s; 
