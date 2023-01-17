@@ -22,20 +22,24 @@
   
   <section id="about">
   </section>
-  
-  <div class="chat-container">
-    <div class="chat-title">
-        <h5>TEST YOUR MOVIE!</h5>
+
+  <section>
+    <div id="bot">
+      <div class="chat-container">
+        <div class="chat-title">
+            <h5>TEST YOUR MOVIE!</h5>
+        </div>
+        <div class="messages">
+            <div class="messages-content"></div>
+        </div>
+        <div class="messages-box">
+            <textarea type="text" class="message-input" placeholder="Type here..."></textarea>
+            <button type="submit" class="message-submit"><strong>>></strong></button>
+        </div>
+      </div>
     </div>
-    <div class="messages">
-        <div class="messages-content"></div>
-    </div>
-    <div class="messages-box">
-        <textarea type="text" class="message-input" placeholder="Type here..."></textarea>
-        <button type="submit" class="message-submit"><strong>>></strong></button>
-    </div>
-  </div>
-  
+  </section>
+
   <section id="hall_fame">
   </section>
   
@@ -53,6 +57,18 @@
   function closeNav() {
     document.getElementById("mySidebar").style.width = "0";
     document.getElementById("main").style.marginLeft = "0";
+  }
+
+  window.onscroll = function() {myFunction()};
+  var openbtn = document.getElementById("openbtn");
+  var sticky = openbtn.offsetTop;
+
+  function myFunction() {
+    if (window.pageYOffset >= sticky) {
+      openbtn.classList.add("sticky")
+    } else {
+      openbtn.classList.remove("sticky");
+    }
   }
   </script>
   
