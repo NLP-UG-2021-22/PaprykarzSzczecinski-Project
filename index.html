@@ -18,7 +18,7 @@
   </div>
     
   <div id="main">
-    <button class="openbtn" onclick="openNav()">&#9776;</button>
+    <button class="openbtn" id="openbtn" onclick="openNav()">&#9776;</button>
   </div>
   
   <section id="about">
@@ -42,9 +42,75 @@
   </section>
 
   <section id="hall_fame">
+    <h1 class="hall_intro">Hall of Fame</h1>
+    <h2>Here are some movies with a high Bechdel score. Slay!</h2>
+    
+    <div class="slideshow-container" data-cycle="3000">
+
+      <div class="mySlides fade1">
+        <img src="https://m.media-amazon.com/images/M/MV5BMzg2Mzg4YmUtNDdkNy00NWY1LWE3NmEtZWMwNGNlMzE5YzU3XkEyXkFqcGdeQXVyMjA5MTIzMjQ@._V1_.jpg" style="width:100%">
+        <div class="text">"Hidden Figures" (2016)</div>
+      </div>
+
+      <div class="mySlides fade1">
+        <img src="https://bloximages.chicago2.vip.townnews.com/hanfordsentinel.com/content/tncms/assets/v3/editorial/4/08/408e70cb-f3de-5adc-aed6-66bd969ca59c/61d4dffbe56cc.image.jpg?resize=1024%2C1536" style="width:100%">
+        <div class="text">"Frozen" (2013)</div>
+      </div>
+
+      <div class="mySlides fade1">
+        <img src="https://m.media-amazon.com/images/M/MV5BMTg5NTg3ODA1OV5BMl5BanBnXkFtZTgwODgzNjk5NDM@._V1_FMjpg_UX1000_.jpg" style="width:100%">
+        <div class="text">"Little Women" (2019)</div>
+      </div>
+
+      <div class="mySlides fade1">
+        <img src="https://media.posterlounge.com/images/l/1886796.jpg" style="width:100%">
+        <div class="text">"Legally Blonde" (2001)</div>
+      </div>
+
+      <div class="mySlides fade1">
+        <img src="https://www.themoviedb.org/t/p/original/854ZZxXdeabAs90mrV72NqShJqR.jpg" style="width:100%">
+        <div class="text">"American Pie 2" (2001)</div>
+      </div>
+
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
   </section>
   
   <section id="hall_shame">
+    <h1 class="hall_intro">Hall of Shame</h1>
+    <h2>Here are some movies that don't pass the Bechdel Test. BOOOOH!</h2>
+
+    <div class="slideshow-container" data-cycle="3000">
+
+      <div class="mySlides fade2">
+        <img src="https://m.media-amazon.com/images/M/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg" style="width:100%">
+        <div class="text">"The Avengers" (2012)</div>
+      </div>
+
+      <div class="mySlides fade2">
+        <img src="https://m.media-amazon.com/images/M/MV5BZWFlYmY2MGEtZjVkYS00YzU4LTg0YjQtYzY1ZGE3NTA5NGQxXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg" style="width:100%">
+        <div class="text">"The Shining" (1980) </div>
+      </div>
+
+      <div class="mySlides fade2">
+        <img src="https://m.media-amazon.com/images/M/MV5BOWZlMjFiYzgtMTUzNC00Y2IzLTk1NTMtZmNhMTczNTk0ODk1XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_FMjpg_UX1000_.jpg" style="width:100%">
+        <div class="text">"Star Wars: Return of the Jedi" (1983)</div>
+      </div>
+
+      <div class="mySlides fade2">
+        <img src="https://m.media-amazon.com/images/M/MV5BN2EyZjM3NzUtNWUzMi00MTgxLWI0NTctMzY4M2VlOTdjZWRiXkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_.jpg" style="width:100%">
+        <div class="text">"The Lord of the Ring" (2001)</div>
+      </div>
+
+      <div class="mySlides fade2">
+        <img src="https://m.media-amazon.com/images/M/MV5BMTk2NTE1NTE0M15BMl5BanBnXkFtZTgwNjY4NTYxMTE@._V1_.jpg" style="width:100%">
+        <div class="text">"Shrek" (2001)</div>
+      </div>
+
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
   </section>
 
   <footer>
@@ -78,6 +144,30 @@
       openbtn.classList.remove("sticky");
     }
   }
+
+  var slideshowContainers = document.getElementsByClassName("slideshow-container");
+  
+  for(let s = 0; s < slideshowContainers.length; s++) {  
+      var cycle = slideshowContainers[s].dataset.cycle;
+      var slides = slideshowContainers[s].querySelectorAll('.mySlides');
+      var slideIndex = 0;
+      showSlides(slides, slideIndex, cycle);
+  };
+
+  function showSlides(slides, slideIndex, cycle) {
+      for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+      };
+      slideIndex++;
+      if (slideIndex > slides.length) {
+          slideIndex = 1
+      };
+      slides[slideIndex - 1].style.display = "block";
+      
+      setTimeout(function() {
+          showSlides(slides, slideIndex, cycle)
+      }, cycle);
+    };
   </script>
   
 </html>
