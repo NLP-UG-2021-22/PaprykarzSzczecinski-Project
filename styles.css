@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Work+Sans&display=swap');
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
     height: 100%;
     background-color: #AE759F;
@@ -227,3 +231,117 @@ h1 {
     transform: scale(1);
   }
 }
+
+
+* {box-sizing:border-box}
+
+.slideshow-container {
+  max-width: 250px;
+  max-height: 400px;
+  position: relative;
+  margin: auto;
+  padding-top: 50px;
+}
+
+.mySlides  {
+  display: none;
+}
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+.text {
+  color: black;
+  font-size: 18px;
+  padding: 2px;
+  position: absolute;
+  top: -5px;
+  width: 100%;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+}
+
+#hall_shame .text{
+  color: white;
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+#hall_fame {
+  background-color: #e8dbc5;
+  margin-top: 100px; 
+  padding: 0 0 100px 0;
+  margin-bottom: none;
+}
+
+#hall_fame h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 40px;
+  letter-spacing: 2px;
+  color: black;
+  padding-top: 40px;
+  text-align: center;
+  font-family: "Limelight", sans-serif;
+}
+
+#hall_fame h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  letter-spacing: 2px;
+  color: black;
+  text-align: center;
+}
+
+#hall_shame {
+  background-color: black;
+  margin-top: -33px;
+  padding: 0 0 100px 0;
+}
+
+#hall_shame h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 40px;
+  letter-spacing: 2px;
+  color: white;
+  padding-top: 40px;
+  text-align: center;
+  font-family: "Limelight", sans-serif;
+}
+
+#hall_shame h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  letter-spacing: 2px;
+  color: white;
+  text-align: center;
+}
+  
