@@ -40,10 +40,10 @@ body {
 @media screen and (max-width: 600px) {
     .chat-container {
         position: relative;
-        margin-right: auto;
+        margin-right: 30px;
         margin-left: auto;
         overflow: hidden;
-        width: 100%;
+        max-width: 90%;
         max-height: 60%;
     }
 }
@@ -131,7 +131,7 @@ h1 {
     z-index: 1; 
     top: 0;
     left: 0;
-    background-color: #111;
+    background-color: #51355A;
     font-family: 'Montserrat', sans-serif;
     overflow-x: hidden; 
     padding-top: 60px; 
@@ -142,15 +142,16 @@ h1 {
   .sidebar a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
+    letter-spacing: 1px;
     font-size: 25px;
-    color: #818181;
+    color: #FBFFF1;
     display: block;
     transition: 0.3s;
   }
   
   
   .sidebar a:hover {
-    color: #f1f1f1;
+    color: #D8B4E2;
   }
   
   
@@ -166,10 +167,10 @@ h1 {
   .openbtn {
     font-size: 20px;
     cursor: pointer;
-    background-color: #111;
-    color: white;
+    background-color: #51355A;
+    color: #FBFFF1;
     padding: 10px 15px;
-    border: none;
+    border: 3px solid #3A2640;
   }
 
   .sticky {
@@ -178,7 +179,7 @@ h1 {
   } 
   
   .openbtn:hover {
-    background-color: #444;
+    background-color: #9F86C0;
   }
   
   
@@ -197,13 +198,8 @@ h1 {
     text-align: center;
     margin-top: auto;
     padding-top: 10px;
-    padding-bottom: 10px;
-    background: rgba( 255, 255, 255, 0.15 );
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    backdrop-filter: blur( 5px );
-    -webkit-backdrop-filter: blur( 5px );
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
-    color: #D4CDF4;
+    padding-bottom: 5px;
+    color: #3A2640;
     font-family: 'Work Sans', sans-serif;
 }
 
@@ -216,9 +212,12 @@ h1 {
 }
 
 .githubbtn {
-    background-color: transparent;
+    background-color: #51355A;
     border: none;
     font-size: 20px;
+    width: 29px;
+    height: 25px;
+    border-radius: 50%;
     transition: .3s;
 }
 
@@ -258,14 +257,14 @@ h1 {
 
 
 .text {
-  color: black;
+  color: #3A2640;
   font-size: 18px;
   padding: 2px;
   position: absolute;
   top: -5px;
   width: 100%;
   text-align: center;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Work Sans', sans-serif;
 }
 
 #hall_shame .text{
@@ -283,49 +282,56 @@ h1 {
 }
 
 #hall_fame {
-  background-color: #e8dbc5;
+  background-color: #feeafa;
+  border: 4px solid #51355A;
+  border-radius: 10%;
   margin-top: 100px; 
   padding: 0 0 100px 0;
-  margin-bottom: none;
+  max-width: 80%;
+  box-shadow:#E0B1CB 10px -10px 0px -3px, #724983 10px -10px, #E0B1CB 20px -20px 0px -3px, #AF4680 20px -20px, #E0B1CB 30px -30px 0px -3px, #CB7CA7 30px -30px, #E0B1CB 40px -40px 0px -3px;
 }
 
 #hall_fame h1 {
   font-family: 'Montserrat', sans-serif;
-  font-size: 40px;
-  letter-spacing: 2px;
-  color: black;
+  font-size: 60px;
+  color: #FBFFF1;
   padding-top: 40px;
   text-align: center;
 }
 
 #hall_fame h2 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 20px;
-  letter-spacing: 2px;
-  color: black;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 25px;
+  color: #3A2640;
   text-align: center;
 }
 
 #hall_shame {
-  background-color: black;
-  margin-top: -33px;
+  background-color: #51355A;
+  border: 4px solid #3A2640;
+  border-radius: 10%;
   padding: 0 0 100px 0;
+  max-width: 80%;
+  margin-top: 100px;
+  margin-left: 250px;
+  box-shadow:#E0B1CB 10px -10px 0px -3px, #724983 10px -10px, #E0B1CB 20px -20px 0px -3px, #AF4680 20px -20px, #E0B1CB 30px -30px 0px -3px, #CB7CA7 30px -30px, #E0B1CB 40px -40px 0px -3px;
 }
 
 #hall_shame h1 {
   font-family: 'Montserrat', sans-serif;
-  font-size: 40px;
+  font-size: 60px;
   letter-spacing: 2px;
-  color: white;
+  color: #3A2640;
+    text-shadow: -1px -1px 0 #FBFFF1, 1px -1px 0 #FBFFF1, -1px 1px 0 #FBFFF1, 1px 1px 0 #FBFFF1,
+                  4px 2px 0 #FBFFF1;
   padding-top: 40px;
   text-align: center;
 }
 
 #hall_shame h2 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 20px;
-  letter-spacing: 2px;
-  color: white;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 25px;
+  color: #FBFFF1;
   text-align: center;
 }
 
@@ -351,7 +357,7 @@ h1 {
   font-family: 'Work Sans', sans-serif;
   font-size: 13px;
   color: #3A2640;
-  text-align:justify;
+  text-align: center;
   padding: 40px;
   border: 4px solid #51355A;
   border-radius: 10%;
@@ -368,7 +374,7 @@ h1 {
 #centralized {
   font-size: 25px;
   border: 4px solid #51355A;
-  border-radius: 15%;
+  border-radius: 5% / 70%;
   background: #9F86C0;
 }
 
@@ -428,4 +434,14 @@ h1 {
   .slideshow-container img{
     height: 250px;
   }
+  #hall_fame {
+    max-width: 90%;
   }
+  #hall_fame h1 {
+    font-size: 35px;
+  }
+  #hall_fame h2 {
+    font-size: 18px;
+    letter-spacing: 0;
+  }
+}
