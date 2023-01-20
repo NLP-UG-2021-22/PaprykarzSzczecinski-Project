@@ -37,17 +37,6 @@ body {
     box-shadow:#E0B1CB 10px -10px 0px -3px, #724983 10px -10px, #E0B1CB 20px -20px 0px -3px, #AF4680 20px -20px, #E0B1CB 30px -30px 0px -3px, #CB7CA7 30px -30px, #E0B1CB 40px -40px 0px -3px;
 }
 
-@media screen and (max-width: 600px) {
-    .chat-container {
-        position: relative;
-        margin-right: 30px;
-        margin-left: auto;
-        overflow: hidden;
-        max-width: 90%;
-        max-height: 60%;
-    }
-}
-
 .chat-title {
     position: relative;
     text-align: left;
@@ -424,7 +413,7 @@ h1 {
 }
 
 @media screen and (max-width: 1050px) {
-  #about {
+  #about, #hall_fame, #hall_shame {
     display: flex;
     flex-direction: column;
     position: relative;
@@ -432,7 +421,7 @@ h1 {
     align-items: center;
     }
 
-  .about_intro {
+  .about_intro, .hall_intro {
     align-items: center;
     margin-left: auto;
     margin-right: auto;
@@ -452,7 +441,7 @@ h1 {
 }
 
 @media screen and (max-width: 600px) {
-  .about_intro {
+  .about_intro, .hall_intro {
     font-size: 40px;
   }
   #centralized {
@@ -464,11 +453,17 @@ h1 {
     margin-right: 0%;
     margin-left: 0%;
   }
-  .about_text {
+  .about_text, .shame_box {
     max-width: 100%;
     font-size: 11px;
     border-radius: 30px;
     margin-right: 30px;
+  }
+  .fame_box {
+    max-width: 100%;
+    font-size: 11px;
+    border-radius: 30px;
+    margin-left: 5px;
   }
   .slideshow-container {
     max-width: 150px; 
@@ -482,11 +477,21 @@ h1 {
   #hall_fame {
     max-width: 90%;
   }
-  #hall_fame h1 {
-    font-size: 35px;
+  .chat-container {
+    position: relative;
+    margin-right: 30px;
+    margin-left: auto;
+    overflow: hidden;
+    max-width: 90%;
+    max-height: 60%;
   }
-  #hall_fame h2 {
-    font-size: 18px;
-    letter-spacing: 0;
+  #hall_shame .hall_intro {
+  margin-right: 125px;
+  margin-bottom: -65px;
   }
+  #hall_fame .hall_intro {
+    margin-left: 150px;
+    margin-bottom: -65px;
+  }
+
 }
