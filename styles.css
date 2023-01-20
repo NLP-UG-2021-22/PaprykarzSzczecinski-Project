@@ -391,3 +391,43 @@ h1 {
   border-radius: 15%;
   background: #9F86C0;
 }
+
+@media screen and (max-width: 1050px) {
+  #about {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    }
+
+  .about_intro {
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .about_text {
+    border-radius: 30px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .about_intro {
+    font-size: 40px;
+  }
+  #centralized {
+    font-size: 18px;
+    border-radius: 10% / 50%;
+  }
+  #about {
+    padding: 0%;
+    margin-right: 0%;
+    margin-left: 0%;
+  }
+  .about_text {
+    max-width: 100%;
+    font-size: 11px;
+    border-radius: 30px;
+    margin-right: 30px;
+  }
+  }
