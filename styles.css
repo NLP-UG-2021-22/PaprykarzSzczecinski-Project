@@ -243,10 +243,13 @@ h1 {
 
 .slideshow-container {
   max-width: 250px;
-  max-height: 400px;
   position: relative;
   margin: auto;
   padding-top: 50px;
+}
+
+.slideshow-container img {
+  height: 400px;
 }
 
 .mySlides  {
@@ -386,6 +389,15 @@ h1 {
   .about_text {
     border-radius: 30px;
   }
+  .slideshow-container {
+    max-width: 200px; 
+    position: relative;
+    margin: auto;
+    padding-top: 50px;
+  }
+  .slideshow-container img{
+    height: 300px;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -406,5 +418,14 @@ h1 {
     font-size: 11px;
     border-radius: 30px;
     margin-right: 30px;
+  }
+  .slideshow-container {
+    max-width: 150px; 
+    position: relative;
+    margin: auto;
+    padding-top: 70px;
+  }
+  .slideshow-container img{
+    height: 250px;
   }
   }
