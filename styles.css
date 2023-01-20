@@ -6,7 +6,7 @@ html {
 
 body {
     height: 100%;
-    background-color: #AE759F;
+    background-color: #E0B1CB;
     margin: 2;
     padding: 0;
     display: flex;
@@ -27,8 +27,8 @@ body {
     max-height: 500px; 
     overflow-x: hidden;
     margin-top: 35px;
-    background: #D4CDF4;
-    border: 5px solid #55286F;
+    background: #feeafa;
+    border: 4px solid #51355A;
     border-radius: 5%;
     display: flex;
     justify-content: space-between;
@@ -43,16 +43,16 @@ body {
         margin-left: auto;
         overflow: hidden;
         width: 100%;
-        max-height: 80%;
+        max-height: 60%;
     }
 }
 
 .chat-title {
     position: relative;
     text-align: left;
-    border-bottom: 5px solid #55286F; 
+    border-bottom: 4px solid #51355A; 
     height: 40px;
-    background: rgba(0, 0, 0, 0.3);
+    background: #9F86C0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -62,7 +62,10 @@ h1 {
     font-family: 'Montserrat', sans-serif;
     font-size: 20px;
     letter-spacing: 2px;
-    color: #55286F;
+    color: #FBFFF1;
+    text-shadow: -1px -1px 0 #3A2640, 1px -1px 0 #3A2640, -1px 1px 0 #3A2640, 1px 1px 0 #3A2640,
+                  4px 2px 0 #51355A;
+    
 }
 
 .messages {
@@ -82,20 +85,21 @@ h1 {
 
 .messages-box {
     width: auto;
-    background: rgba(0, 0, 0, 0.3);
+    background: #9F86C0;
     padding: 5px;
     position: relative;
     overflow: hidden;
     display: flex;
     justify-content: space-between;
-    border-top: 5px solid #55286F;
+    border-top: 4px solid #51355A;
 }
 
 .message-submit {
-    border: 3px solid #55286F;
+    border: 3px solid #51355A;
     font-family: 'Work Sans', sans-serif;
     text-align: center;
     transition: .2s ease-in-out;
+    background: #feeafa;
     margin: 5px;
     border-bottom-right-radius: 15px;
 }
@@ -110,11 +114,12 @@ h1 {
 }
 
 .message-input {
-    border: 3px solid #55286F;
+    border: 3px solid #51355A;
     border-bottom-left-radius: 15px;
     margin: 5px;
     width: 400px;
     font-family: 'Work Sans', sans-serif;
+    background: #feeafa;
 }
 
 
@@ -310,7 +315,6 @@ h1 {
   color: black;
   padding-top: 40px;
   text-align: center;
-  font-family: "Limelight", sans-serif;
 }
 
 #hall_fame h2 {
@@ -334,7 +338,6 @@ h1 {
   color: white;
   padding-top: 40px;
   text-align: center;
-  font-family: "Limelight", sans-serif;
 }
 
 #hall_shame h2 {
@@ -354,14 +357,14 @@ h1 {
 .about_intro {
   font-family: 'Montserrat', sans-serif;
   font-size: 30px;
-  color: black;
+  color: #FBFFF1;
   text-align: center;
 }
 
 .about_text {
   font-family: 'Work Sans', sans-serif;
   font-size: 13px;
-  color: black;
+  color: #3A2640;
   text-align: center;
 }
   
