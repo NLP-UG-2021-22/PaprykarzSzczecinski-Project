@@ -498,11 +498,8 @@ header {
     justify-content: center;
     align-items: center;
     }
-
-  .about_intro, .hall_intro {
-    align-items: center;
-    margin-left: auto;
-    margin-right: auto;
+  .about_intro {
+    margin-left: 0;
   }
   #hall_fame .hall_intro {
     margin-right: 0;
