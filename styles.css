@@ -444,6 +444,9 @@ header {
   margin-bottom: -10px;
   text-align: center;
 }
+span:hover {
+  cursor: pointer;
+}
 
 @-webkit-keyframes text-flicker-in-glow {
   0%{opacity:0}10%{opacity:0;text-shadow:none}10.1%{opacity:1;text-shadow:none}
