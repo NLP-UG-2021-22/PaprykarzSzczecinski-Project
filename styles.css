@@ -136,6 +136,7 @@ h1 {
     color: #FBFFF1;
     display: block;
     transition: 0.3s;
+    white-space: nowrap;
   }
   
   
