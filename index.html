@@ -12,17 +12,26 @@
 </head>
 <body>
   <header>
-  <div id="mySidebar" class="sidebar">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a href="#about">About</a>
-    <a href="#bot">Bot</a>
-    <a href="#hall_fame">Hall of Fame</a>
-    <a href="#hall_shame">Hall of Shame</a>
-  </div>
-    
-  <div id="main">
-    <button class="openbtn" id="openbtn" onclick="openNav()">&#9776;</button>
-  </div>
+    <nav class="nav">
+      <div class="container">
+          <div id="mainListDiv" class="main_list">
+              <ul class="navlinks">
+                  <li><a href="#about">About</a></li>
+                  <li><a href="#bot">Chatbot</a></li>
+                  <li><a href="#hall_fame">Hall of Fame</a></li>
+                  <li><a href="#hall_shame">Hall of Shame</a></li>
+              </ul>
+          </div>
+          <span class="navTrigger">
+              <i></i>
+              <i></i>
+              <i></i>
+          </span>
+      </div>
+  </nav>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="js/scripts.js"></script>
 
   <div class="title-container">
     <h1 class="title">Bechdel Bot</h1>
@@ -138,28 +147,6 @@
 
 <script>
 
-  function openNav() {
-    document.getElementById("mySidebar").style.width = "250px";
-    document.getElementById("main").style.marginLeft = "250px";
-  }
-  
-  function closeNav() {
-    document.getElementById("mySidebar").style.width = "0";
-    document.getElementById("main").style.marginLeft = "0";
-  }
-
-  window.onscroll = function() {myFunction()};
-  var openbtn = document.getElementById("openbtn");
-  var sticky = openbtn.offsetTop;
-
-  function myFunction() {
-    if (window.pageYOffset >= sticky) {
-      openbtn.classList.add("sticky")
-    } else {
-      openbtn.classList.remove("sticky");
-    }
-  }
-
   var slideshowContainers = document.getElementsByClassName("slideshow-container");
   
   for(let s = 0; s < slideshowContainers.length; s++) {  
@@ -196,6 +183,23 @@
     const neonGlory = target => target.innerHTML = flickerAndColorText(target.textContent);
     neonGlory(target);
     target.onclick = ({ target }) =>  neonGlory(target);
+
+    $(window).scroll(function() {
+        if ($(document).scrollTop() > 50) {
+            $('.nav').addClass('affix');
+            console.log("OK");
+        } else {
+            $('.nav').removeClass('affix');
+        }
+    });
+
+    $('.navTrigger').click(function () {
+    $(this).toggleClass('active');
+    console.log("Clicked menu");
+    $("#mainListDiv").toggleClass("show_list");
+    $("#mainListDiv").fadeIn();
+
+});
 
   </script>
   
