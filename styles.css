@@ -86,6 +86,10 @@ h1 {
     border-top: 4px solid #51355A;
 }
 
+textarea {
+  resize: none;
+}
+
 .message-submit {
     border: 3px solid #51355A;
     font-family: 'Work Sans', sans-serif;
@@ -785,6 +789,9 @@ span:hover {
     justify-content: center;
     align-items: center;
     }
+  #about {
+      padding: 0%;
+  }
   .about_intro {
     margin-left: 0;
   }
@@ -824,7 +831,7 @@ span:hover {
     line-height: 1.1;
   }
   .chat-container {
-    width: 90%;
+    width: 80%;
     max-height: 60%;
   }
 }
@@ -867,10 +874,9 @@ span:hover {
   .chat-container {
     position: relative;
     margin-right: 30px;
-    margin-left: auto;
     overflow: hidden;
     width: 90%;
-    max-height: 60%;
+    max-height: 70%;
   }
   #hall_shame .hall_intro {
   margin-left: 0;
