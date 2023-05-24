@@ -60,9 +60,12 @@ let messages = document.getElementById("messages");
 const messageInput = document.getElementById("messageInput");
 const submitButton = document.getElementById("submitButton");
 
+const url = "http://bechdeltest.com/api/v1/getMoviesByTitle?title="
+
 document.addEventListener("DOMContentLoaded", () => {
     document.querySelector("#messageInput").addEventListener("keydown", function(e) {
         if (e.code === "Enter") {
+            e.preventDefault();
             let messageValue = messageInput.value;
             let paras = document.createElement("div")
             paras.innerText = messageValue;
@@ -77,13 +80,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 submitButton.onclick = function(event) {
     event.preventDefault();
-    let urlModified = url;
     let messageValue = messageInput.value;
-    urlModified += messageValue.replaceAll(' ', '+');
-    console.log(urlModified);
     let paras = document.createElement("div")
     paras.innerText = messageValue;
     messages.appendChild(paras)
     messageInput.value = "";
+    let urlModified = url;
+    urlModified += messageValue.replaceAll(' ', '+');
+    console.log(urlModified);
 
 }
