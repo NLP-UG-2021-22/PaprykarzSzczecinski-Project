@@ -89,6 +89,7 @@ submitButton.onclick = function(event) {
     let messageValue = messageInput.value;
     let paras = document.createElement("div")
     paras.innerText = messageValue;
+    paras.classList.add("bubble-user");
     messages.appendChild(paras)
     messageInput.value = "";
     let urlModified = url;
