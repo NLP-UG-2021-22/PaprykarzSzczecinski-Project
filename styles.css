@@ -220,7 +220,6 @@ display: none;
   }
   .nav div.show_list {
       height: auto;
-      display: none;
       position: fixed;
       top: 0;
       background-color: #493650;
