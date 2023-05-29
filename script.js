@@ -60,7 +60,7 @@ let messages = document.getElementById("messages");
 const messageInput = document.getElementById("messageInput");
 const submitButton = document.getElementById("submitButton");
 
-const url = "http://bechdeltest.com/api/v1/getMoviesByTitle?title="
+const url = "https://bechdeltest.com/api/v1/getMoviesByTitle?title="
 
 document.addEventListener("DOMContentLoaded", () => {
     document.querySelector("#messageInput").addEventListener("keydown", function(e) {
