@@ -86,6 +86,11 @@ h1 {
     border-top: 4px solid #51355A;
 }
 
+.bubble-user {
+  display: flex;
+  justify-content: flex-end;
+}
+
 textarea {
   resize: none;
 }
