@@ -38,22 +38,22 @@ function showSlides(slides, slideIndex, cycle) {
     const playAudio = audio.play();
   };
 
-  $(window).scroll(function() {
-      if ($(document).scrollTop() > 50) {
-          $('.nav').addClass('affix');
-          console.log("OK");
-      } else {
-          $('.nav').removeClass('affix');
-      }
-  });
+  document.addEventListener("scroll", (event) => {
+    if (window.scrollY > 50) {
+        document.querySelector(".nav").classList.add('affix');
+    } else {
+      document.querySelector(".nav").classList.remove('affix');
+    }
+  })
 
-  $('.navTrigger').click(function () {
-  $(this).toggleClass('active');
-  console.log("Clicked menu");
-  $("#mainListDiv").toggleClass("show_list");
-  $("#mainListDiv").fadeIn();
 
-});
+const navTrigger = document.querySelector(".navTrigger")
+const mainListDiv = document.getElementById("mainListDiv")
+
+navTrigger.addEventListener("click", function() {
+    this.classList.toggle('active');
+    mainListDiv.classList.toggle("show_list");
+})
 
 const bot = document.getElementById("bot")
 let messages = document.getElementById("messages");
@@ -74,6 +74,11 @@ document.addEventListener("DOMContentLoaded", () => {
             let urlModified = url;
             urlModified += messageValue.replaceAll(' ', '+');
             console.log(urlModified);
+            fetch(urlModified) 
+            .then(response => response.json())
+            .then(response => {
+                console.log(response)
+            })
         }
     })
 })
@@ -88,5 +93,10 @@ submitButton.onclick = function(event) {
     let urlModified = url;
     urlModified += messageValue.replaceAll(' ', '+');
     console.log(urlModified);
+    fetch(urlModified) 
+    .then(response => response.json())
+    .then(response => {
+        console.log(response)
+    })
 
 }
