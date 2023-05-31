@@ -118,6 +118,27 @@ h1 {
   }
 }
 
+.bubble-bot {
+  grid-column-start: 1;
+  border-radius: 12px;
+  border-top-left-radius: 0;
+  padding: 1rem;
+  margin-bottom: 15px;
+  max-width: 80%;
+  font-family: 'Work Sans', sans-serif;
+  text-align: center;
+  hyphens: auto;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  background: #e5b2ca;
+  color: #453a94;
+  opacity: 0;
+  animation: pop 0.3s cubic-bezier(0.36, -0.04, 0.15, 1.64) forwards;
+  will-change: transform;
+  transform-origin: top left;
+}
+
 textarea {
   resize: none;
 }
