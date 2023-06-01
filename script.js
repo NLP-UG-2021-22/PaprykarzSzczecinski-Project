@@ -93,6 +93,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
             /*clear the text area*/
             messageInput.value = "";
+
+            scrollToBottom();
             
         }
     })
@@ -106,7 +108,7 @@ submitButton.onclick = function(event) {
     let messageValue = messageInput.value;
 
 
-    /*display input in widnow*/
+    /*display input in window*/
     let paras = document.createElement("div")
     paras.innerText = messageValue;
     paras.classList.add("bubble-user");
@@ -122,7 +124,7 @@ submitButton.onclick = function(event) {
     /*clear the text area*/
     messageInput.value = "";
     
-    
+    scrollToBottom();
 }
 
 
@@ -204,7 +206,7 @@ function getBechdel(messageValue) {
             messages.appendChild(parasBot);
         }
 
-
+        scrollToBottom();
     }
 
    
@@ -233,3 +235,8 @@ function getMovieDataBaseUrl () {
         .then(response => console.log(response))   
 }
 
+/* Always see the latest message */
+function scrollToBottom() {
+    const messageScroll = document.querySelector('.messages');
+    messageScroll.scrollTop = messageScroll.scrollHeight;
+  }
