@@ -102,8 +102,8 @@ h1 {
   overflow-wrap: break-word;
   word-wrap: break-word;
   word-break: break-word;
-  background: #453a94;
-  color: #e5b2ca;
+  background: #69439c;
+  color: #fab9d7;
   opacity: 0;
   animation: pop 0.3s cubic-bezier(0.36, -0.04, 0.15, 1.64) forwards;
   will-change: transform;
@@ -136,7 +136,7 @@ h1 {
   word-wrap: break-word;
   word-break: break-word;
   background: #e5b2ca;
-  color: #453a94;
+  color: #472b6b;
   opacity: 0;
   animation: pop 0.3s cubic-bezier(0.36, -0.04, 0.15, 1.64) forwards;
   will-change: transform;
