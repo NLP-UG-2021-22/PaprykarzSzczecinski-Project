@@ -66,13 +66,14 @@ const url2 = 'https://moviesdatabase.p.rapidapi.com/titles/search/title/'
 /* the keywords section*/
 let triggerBechdel = ["ttl", "TTL"]
 let triggersInfo = ["info", "information", "details", "specifics"]
-let triggersWortWatching = ["worth", "watching", "reccomend", "should i see it", "should i watch", "should i see it?", "should I watch?"]
+let triggersWortWatching = ["worth", "watching", "recommend", "should i see it", "should i watch", "should i see it?", "should I watch?"]
 let triggersBored = ["bored", "sad"]
 let triggersOk = ["ok", "sure"]
 let triggersThanks = ["thanks", "thank", "thx"]
 let triggersBye = ["goodbye", "bye", "see you", "see ya", "good night", "toodles"]
-let triggersPlot = ["plot", "summary"]
+let triggersPlot = ["plot", "summary", "description", "what is it about"]
 let triggersSentient = ["human", "alive", "sentient", "real"]
+let triggersWhyWorthWatching = ["why", "how so"]
 
 /* response option - the movie title is incorrect */
 let responseWrongTtile = [
@@ -181,6 +182,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                 parasSentient.classList.add("bubble-bot");
                                 parasSentient.innerText = randomSentient;
                                 messages.appendChild(parasSentient)
+                        } else {
+                            if (triggersWhyWorthWatching.some(triggersWhyWorthWatching => messageValue.toLowerCase().includes(triggersWhyWorthWatching))) {
+                                whyWorthWatching(title);
                         }
                          
 
@@ -190,6 +194,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         parasUnexpectedInput.innerText = randomUnexpectedInput;
                         messages.appendChild(parasUnexpectedInput);
 
+                }
                 }
                 }
                 }
@@ -268,6 +273,9 @@ submitButton.onclick = function(event) {
                         parasSentient.classList.add("bubble-bot");
                         parasSentient.innerText = randomSentient;
                         messages.appendChild(parasSentient)
+                } else {
+                    if (triggersWhyWorthWatching.some(triggersWhyWorthWatching => messageValue.toLowerCase().includes(triggersWhyWorthWatching))) {
+                        whyWorthWatching(title);
                 }
                  
 
@@ -277,6 +285,7 @@ submitButton.onclick = function(event) {
                 parasUnexpectedInput.innerText = randomUnexpectedInput;
                 messages.appendChild(parasUnexpectedInput);
 
+        }
         }
         }
         }
@@ -486,6 +495,49 @@ function isMovieWorthWatching(title) {
             scrollToBottom();
         })
 }
+
+function whyWorthWatching() {
+    let urlMDB = url2;
+    /* convert input to title case */
+    const lowerInputString = title.toLowerCase();
+    const splitInput = lowerInputString.split(' ');
+    const convertedInput = []
+    splitInput.forEach((word, index) => {
+        if (index === 0) {
+            convertedInput.push(word[0].toUpperCase() + word.slice(1))
+        return
+    }
+    if (word.length > 3) {
+        convertedInput.push(word[0].toUpperCase() + word.slice(1))
+    } else {
+        convertedInput.push(word)
+    }
+    })
+    const titleInput = convertedInput.join(' ')
+
+    /* construct the url */
+    urlMDB += titleInput.replaceAll(' ', '%20') + '?exact=true&info=base_info&titleType=movie';
+        console.log(urlMDB)
+        const options = {
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': 'f22efb155emshd153236925f83c7p19b8c5jsn378a0a9c82e9',
+                'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com'
+            }
+        };
+        fetch(urlMDB, options)
+        .then(response => response.json())
+        .then(response => {
+            let parasBot = document.createElement("div")
+            parasBot.classList.add("bubble-bot");
+
+            let rating = response["results"][0]["ratingsSummary"]["aggregateRating"];
+            parasBot.innerText = `The rating is literally ${rating}.`;
+            messages.appendChild(parasBot);
+
+            scrollToBottom();
+            })
+        }
 
 /* function to obtain information about the movie with the use of Movie Data Base API */
 function movieInfo() {
