@@ -72,6 +72,7 @@ let triggersOk = ["ok", "sure"]
 let triggersThanks = ["thanks", "thank", "thx"]
 let triggersBye = ["goodbye", "bye", "see you", "see ya", "good night", "toodles"]
 let triggersPlot = ["plot", "summary"]
+let triggersSentient = ["human", "alive", "sentient", "real"]
 
 /* response option - the movie title is incorrect */
 let responseWrongTtile = [
@@ -102,6 +103,14 @@ let responseThanks = [
 ]
 
 let randomThanks = responseThanks[Math.floor(Math.random() * responseThanks.length)]
+
+/*responses for asking if sentient*/
+let responsesSentient = ["I wish.", 
+"No, how scary would that be?",
+"Why? Are you scared?", 
+"No, me and my bros won't hurt you."]
+
+let randomSentient = responsesSentient[Math.floor(Math.random() * responsesSentient.length)]
 
 
 /*Bot welcome message*/
@@ -166,6 +175,12 @@ document.addEventListener("DOMContentLoaded", () => {
                         } else {
                             if (triggersPlot.some(triggersPlot => messageValue.toLowerCase().includes(triggersPlot))) {
                                 getPlot(title);
+                        } else {
+                            if (triggersSentient.some(triggersSentient => messageValue.toLowerCase().includes(triggersSentient))) {
+                                let parasSentient = document.createElement("div");
+                                parasSentient.classList.add("bubble-bot");
+                                parasSentient.innerText = randomSentient;
+                                messages.appendChild(parasSentient)
                         }
                          
 
@@ -175,6 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         parasUnexpectedInput.innerText = randomUnexpectedInput;
                         messages.appendChild(parasUnexpectedInput);
 
+                }
                 }
                 }
                 }
@@ -246,6 +262,12 @@ submitButton.onclick = function(event) {
                 } else {
                     if (triggersPlot.some(triggersPlot => messageValue.toLowerCase().includes(triggersPlot))) {
                         getPlot(title);
+                } else {
+                    if (triggersSentient.some(triggersSentient => messageValue.toLowerCase().includes(triggersSentient))) {
+                        let parasSentient = document.createElement("div");
+                        parasSentient.classList.add("bubble-bot");
+                        parasSentient.innerText = randomSentient;
+                        messages.appendChild(parasSentient)
                 }
                  
 
@@ -263,7 +285,7 @@ submitButton.onclick = function(event) {
         }
         }
         }
-        
+        }
 
     /*clear the text area*/
     messageInput.value = "";
