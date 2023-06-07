@@ -60,16 +60,58 @@ let messages = document.getElementById("messages");
 const messageInput = document.getElementById("messageInput");
 const submitButton = document.getElementById("submitButton");
 
-const url = "https://bechdel-api-workaround.onrender.com/getMoviesByTitle?title="
+const url = "https://bechdel-api-workaround.onrender.com/getMovieByImdbId?imdbid="
 const url2 = 'https://moviesdatabase.p.rapidapi.com/titles/search/title/'
+
+/* the keywords section*/
+let triggerBechdel = ["ttl", "TTL"]
+let triggersInfo = ["info", "information", "details", "specifics"]
+let triggersWortWatching = ["worth", "watching", "reccomend", "should i see it", "should i watch", "should i see it?", "should I watch?"]
+let triggersBored = ["bored", "sad"]
+let triggersOk = ["ok", "sure"]
+let triggersThanks = ["thanks", "thank", "thx"]
+let triggersBye = ["goodbye", "bye", "see you", "see ya", "good night", "toodles"]
+let triggersPlot = ["plot", "summary"]
+
+/* response option - the movie title is incorrect */
+let responseWrongTtile = [
+                "Babe, that's not even a correct tiltle.", 
+                "I don't know this movie. Are you sure the title's correct?", 
+                "Yeah, nah, wrong title. Try again.",
+                "Woops. I don't think that's correct.",
+                "Umm... that's not how you spell that title."
+            ];
+let randomWrongTtile = responseWrongTtile[Math.floor(Math.random() * responseWrongTtile.length)];
+
+/*responses for unexpected input*/
+let responseUnexpectedInput = [
+    "I don't know what you are talking about.",
+    "What are you talking about?",
+    "What do you want me to do with that?",
+    "I don't want to talk about it"
+];
+
+let randomUnexpectedInput = responseUnexpectedInput[Math.floor(Math.random() * responseUnexpectedInput.length)];
+
+/*responses for thank you messages*/
+let responseThanks = [
+    "No worries.",
+    "Don't mention it.", 
+    "Happy to help.", 
+    ":)"
+]
+
+let randomThanks = responseThanks[Math.floor(Math.random() * responseThanks.length)]
 
 
 /*Bot welcome message*/
 let parasBot = document.createElement("div");
-parasBot.innerText = "Hi! Let me know what movie title you want to test."
+parasBot.innerText = "Hi! Let me know what movie title you want to test. Please write ttl to indicate the title, tho. Thanks love."
 parasBot.classList.add("bubble-bot");
 messages.appendChild(parasBot)            
 
+let title = "";
+var movieId = "";
 
 /* ON ENTER*/
 document.addEventListener("DOMContentLoaded", () => {
@@ -85,14 +127,63 @@ document.addEventListener("DOMContentLoaded", () => {
             paras.classList.add("bubble-user");
             messages.appendChild(paras)
             
-            movieInfo(messageValue);
-            /*Construct url for Bechdel from input*/
-            getBechdel(messageValue);
+            /* Conditionals for triggers*/
+            if (triggerBechdel.some(trigger => messageValue.toLowerCase().includes(trigger))) {
+                title = messageValue.toLowerCase().replace("ttl ", "");  
+                getBechdelFromId();  
+            }  else {
+                if (triggersInfo.some(triggerInfo => messageValue.toLowerCase().includes(triggerInfo))) {
+                        movieInfo(title)
+                    }
+                 else {
+                    if (triggersWortWatching.some(triggerWorthWatching => messageValue.toLowerCase().includes(triggerWorthWatching))) {
+                            isMovieWorthWatching(title);
+                    } else {
+                        if (triggersBored.some(triggersBored => messageValue.toLowerCase().includes(triggersBored))) {
+                            let parasBored = document.createElement("div");
+                            parasBored.classList.add("bubble-bot")
+                            parasBored.innerText = "You should watch a movie then. Come on, give me a title to test.";
+                            messages.appendChild(parasBored);
+                        } else {
+                            if (triggersOk.some(triggersOk => messageValue.toLowerCase().includes(triggersOk))) {
+                              let parasOk = document.createElement("div");
+                              parasOk.classList.add("bubble-bot");
+                              parasOk.innerText = "Ok.";
+                              messages.appendChild(parasOk);
+                        } else {
+                            if (triggersThanks.some(triggersThanks => messageValue.toLowerCase().includes(triggersThanks))) {
+                                let parasThanks = document.createElement("div");
+                                parasThanks.classList.add("bubble-bot")
+                                parasThanks.innerText = randomThanks;
+                                messages.appendChild(parasThanks);
+                        } else {
+                            if (triggersBye.some(triggersBye => messageValue.toLowerCase().includes(triggersBye))) {
+                                let parasBye = document.createElement("div");
+                                parasBye.classList.add("bubble-bot");
+                                parasBye.innerText = "Toodles!"
+                                messages.appendChild(parasBye)
+                            
+                        } else {
+                            if (triggersPlot.some(triggersPlot => messageValue.toLowerCase().includes(triggersPlot))) {
+                                getPlot(title);
+                        }
+                         
 
-            isMovieWorthWatching(messageValue);
+                 else /* if nothing fits - for now randomization doesn't work*/{
+                    let parasUnexpectedInput = document.createElement("div");
+                        parasUnexpectedInput.classList.add("bubble-bot");
+                        parasUnexpectedInput.innerText = randomUnexpectedInput;
+                        messages.appendChild(parasUnexpectedInput);
 
-            /*Construct url for Movie Data Base from input*/
-            // getMovieDataBaseUrl(messageValue);
+                }
+                }
+                }
+                }
+                }
+                }
+                }
+                }
+                
 
             /*clear the text area*/
             messageInput.value = "";
@@ -117,14 +208,62 @@ submitButton.onclick = function(event) {
     paras.classList.add("bubble-user");
     messages.appendChild(paras)
     
-    movieInfo(messageValue);
-    /*Construct url for Bechdel from input*/
-    getBechdel(messageValue);
+    if (triggerBechdel.some(trigger => messageValue.toLowerCase().includes(trigger))) {
+        title = messageValue.toLowerCase().replace("ttl ", "");  
+        getBechdelFromId();  
+    }  else {
+        if (triggersInfo.some(triggerInfo => messageValue.toLowerCase().includes(triggerInfo))) {
+                movieInfo(title)
+            }
+         else {
+            if (triggersWortWatching.some(triggerWorthWatching => messageValue.toLowerCase().includes(triggerWorthWatching))) {
+                    isMovieWorthWatching(title);
+            } else {
+                if (triggersBored.some(triggersBored => messageValue.toLowerCase().includes(triggersBored))) {
+                    let parasBored = document.createElement("div");
+                    parasBored.classList.add("bubble-bot")
+                    parasBored.innerText = "You should watch a movie then. Come on, give me a title to test.";
+                    messages.appendChild(parasBored);
+                } else {
+                    if (triggersOk.some(triggersOk => messageValue.toLowerCase().includes(triggersOk))) {
+                      let parasOk = document.createElement("div");
+                      parasOk.classList.add("bubble-bot");
+                      parasOk.innerText = "Ok.";
+                      messages.appendChild(parasOk);
+                } else {
+                    if (triggersThanks.some(triggersThanks => messageValue.toLowerCase().includes(triggersThanks))) {
+                        let parasThanks = document.createElement("div");
+                        parasThanks.classList.add("bubble-bot")
+                        parasThanks.innerText = randomThanks;
+                        messages.appendChild(parasThanks);
+                } else {
+                    if (triggersBye.some(triggersBye => messageValue.toLowerCase().includes(triggersBye))) {
+                        let parasBye = document.createElement("div");
+                        parasBye.classList.add("bubble-bot");
+                        parasBye.innerText = "Toodles!"
+                        messages.appendChild(parasBye)
+                    
+                } else {
+                    if (triggersPlot.some(triggersPlot => messageValue.toLowerCase().includes(triggersPlot))) {
+                        getPlot(title);
+                }
+                 
 
-    isMovieWorthWatching(messageValue);
+         else /* if nothing fits - for now randomization doesn't work*/{
+            let parasUnexpectedInput = document.createElement("div");
+                parasUnexpectedInput.classList.add("bubble-bot");
+                parasUnexpectedInput.innerText = randomUnexpectedInput;
+                messages.appendChild(parasUnexpectedInput);
 
-    /*Construct url for Movie Data Base from input*/
-    // getMovieDataBaseUrl(messageValue);
+        }
+        }
+        }
+        }
+        }
+        }
+        }
+        }
+        
 
     /*clear the text area*/
     messageInput.value = "";
@@ -134,18 +273,16 @@ submitButton.onclick = function(event) {
 
 
 /*function for testing whether it passes Bechdel*/
-function getBechdel(messageValue) {
+function getBechdel() {
 
     let urlBechdel = url;
-    urlBechdel += messageValue.replaceAll(' ', '+');
+    urlBechdel += movieId;
     console.log(urlBechdel);
     fetch(urlBechdel) 
     .then(response => response.json())
     .then(response => {
         let parasBot = document.createElement("div")
         parasBot.classList.add("bubble-bot");
-
-
         
         /* response options (passing) */
         let responsePass3 = ["Hell yeah, it passes.", "Yup. It does.", "Fun! It passes. Good to know."]
@@ -155,7 +292,7 @@ function getBechdel(messageValue) {
          "Nope. It seems that they have been written to only care about men"
         ]
         /* response options (passes one)*/
-        let responsePass1 = ["It doesn't pass. According to the authors of this movie two women have no desire to talk. I think the authorhs haven't met many women",
+        let responsePass1 = ["It doesn't pass. According to the authors of this movie two women have no desire to talk. I think the authors haven't met many women",
          "Almost, but not quite. Women are there but they only want to talk to men.... I don't get it either",
         "No. Women only talk to men. Strange."]
 
@@ -164,68 +301,62 @@ function getBechdel(messageValue) {
          "Hell no. They couldn't even put two women in this movie", 
          "Nope. There aren't two women in this whole movie. It's just sad"]
 
-        /*response options (wrong title) */
-        let responseWrongTtile = ["Not a title babe.", 
-        "I know many thing, but that I do not.", 
-        "Yeah, nah. Try again.",
-        "Woops. I don't think that's correct.",
-        "That's not how you spell that title. Did you talk to MojitoMan before this?"]
-
         /*for picking at random*/
         let randomPass3 = responsePass3[Math.floor(Math.random() * responsePass3.length)];
         let randomPass2 = responsePass2[Math.floor(Math.random() * responsePass2.length)];
         let randomPass1 = responsePass1[Math.floor(Math.random() * responsePass1.length)];
         let randomPass0 = responsePass0[Math.floor(Math.random() * responsePass0.length)];
-        let randomWrongTtile = responseWrongTtile[Math.floor(Math.random() * responseWrongTtile.length)];
-       
-/* conditional for passing*/
-        try {
-                    let score = response[0]["rating"];
-                    if (score == 3) {
+        
+        /* catching errors if the movie is in one API, but not in the other  */
+        let propertiesCount = 0
+        for (properties in response) {
+            propertiesCount += 1
+        }        
+        
+        /* conditional for passing*/
+        if (propertiesCount === 9) {
+            console.log(response.lenght)
+            let score = response["rating"];
+            if (score == 3) {
+                console.log(score);
+                parasBot.innerText = randomPass3;
+                messages.appendChild(parasBot);
+            } else {
+                if (score == 2) {
+                    console.log(score);
+                    parasBot.innerText = randomPass2;
+                    messages.appendChild(parasBot);
+                } else {
+                    if (score == 1) {
                         console.log(score);
-                        parasBot.innerText = randomPass3;
+                        parasBot.innerText = randomPass1;
                         messages.appendChild(parasBot);
                     } else {
-                        if (score == 2) {
+                        if (score == 0) {
                             console.log(score);
-                            parasBot.innerText = randomPass2;
+                            parasBot.innerText = randomPass0;
                             messages.appendChild(parasBot);
-                        } else {
-                            if (score == 1) {
-                                console.log(score);
-                                parasBot.innerText = randomPass1;
-                                messages.appendChild(parasBot);
-                            } else {
-                                if (score == 0) {
-                                    console.log(score);
-                                    parasBot.innerText = randomPass0;
-                                    messages.appendChild(parasBot);
-                                }
-                            }
-                    } 
-
+                        }
                     }
- 
-            } catch(err) {
-            parasBot.innerText = randomWrongTtile;
-            messages.appendChild(parasBot);
+            } 
+
+            }
+
+        } else {
+        parasBot.innerText = randomWrongTtile;
+        messages.appendChild(parasBot);
         }
 
         scrollToBottom();
     }
+)}     
 
-   
-    
-)}
-
-   
 
 
 /* function for the Movie Data Base API*/
 function getMovieDataBaseUrl () {
-    let messageValue = messageInput.value;
     let urlMDB = url2;
-        urlMDB += messageValue.replaceAll(' ', '%20') + '?exact=false&info=base_info&titleType=movie';
+        urlMDB += title.replaceAll(' ', '%20') + '?exact=false&info=base_info&titleType=movie';
         console.log(urlMDB)
         const options = {
             method: 'GET',
@@ -241,11 +372,11 @@ function getMovieDataBaseUrl () {
 }
 
 /* function to check if the movie is worth watching on the basis of the rating with the use of Movie Data Base API */
-function isMovieWorthWatching(messageValue) {
+function isMovieWorthWatching(title) {
     let urlMDB = url2;
 
     /* convert input to title case */
-    const lowerInputString = messageValue.toLowerCase();
+    const lowerInputString = title.toLowerCase();
     const splitInput = lowerInputString.split(' ');
     const convertedInput = []
     splitInput.forEach((word, index) => {
@@ -330,15 +461,16 @@ function isMovieWorthWatching(messageValue) {
                 parasBot.innerText = randomWrongTtile;
                 messages.appendChild(parasBot);
             }
+            scrollToBottom();
         })
 }
 
 /* function to obtain information about the movie with the use of Movie Data Base API */
-function movieInfo(messageValue) {
+function movieInfo() {
     let urlMDB = url2;
 
     /* convert input to title case */
-    const lowerInputString = messageValue.toLowerCase();
+    const lowerInputString = title.toLowerCase();
     const splitInput = lowerInputString.split(' ');
     const convertedInput = []
     splitInput.forEach((word, index) => {
@@ -392,8 +524,96 @@ function movieInfo(messageValue) {
             messages.appendChild(parasBot);
             console.log(response);
         }
+        scrollToBottom();
         })
 }
+
+/* function for running Bechdel with the Id from IMDB*/
+function getBechdelFromId() {
+    let urlMDB = url2;
+    /* convert input to title case */
+    const lowerInputString = title.toLowerCase();
+    const splitInput = lowerInputString.split(' ');
+    const convertedInput = []
+    splitInput.forEach((word, index) => {
+        if (index === 0) {
+            convertedInput.push(word[0].toUpperCase() + word.slice(1))
+        return
+    }
+    if (word.length > 3) {
+        convertedInput.push(word[0].toUpperCase() + word.slice(1))
+    } else {
+        convertedInput.push(word)
+    }
+    })
+    const titleInput = convertedInput.join(' ')
+
+    /* construct the url */
+    urlMDB += titleInput.replaceAll(' ', '%20') + '?exact=true&info=base_info&titleType=movie';
+        console.log(urlMDB)
+        const options = {
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': 'f22efb155emshd153236925f83c7p19b8c5jsn378a0a9c82e9',
+                'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com'
+            }
+        };
+        fetch(urlMDB, options)
+        .then(response => response.json())
+        .then(response => {
+            
+            try {
+                movieId = response["results"][0]["id"].slice(2,9);
+                getBechdel();
+            } catch(err) {
+                parasBot.innerText = randomWrongTtile;
+                messages.append(parasBot)
+            }
+        })
+}
+
+function getPlot() {
+    let urlMDB = url2;
+    /* convert input to title case */
+    const lowerInputString = title.toLowerCase();
+    const splitInput = lowerInputString.split(' ');
+    const convertedInput = []
+    splitInput.forEach((word, index) => {
+        if (index === 0) {
+            convertedInput.push(word[0].toUpperCase() + word.slice(1))
+        return
+    }
+    if (word.length > 3) {
+        convertedInput.push(word[0].toUpperCase() + word.slice(1))
+    } else {
+        convertedInput.push(word)
+    }
+    })
+    const titleInput = convertedInput.join(' ')
+
+    /* construct the url */
+    urlMDB += titleInput.replaceAll(' ', '%20') + '?exact=true&info=base_info&titleType=movie';
+        console.log(urlMDB)
+        const options = {
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': 'f22efb155emshd153236925f83c7p19b8c5jsn378a0a9c82e9',
+                'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com'
+            }
+        };
+        fetch(urlMDB, options)
+        .then(response => response.json())
+        .then(response => {
+            let parasBot = document.createElement("div")
+            parasBot.classList.add("bubble-bot");
+
+            let plot = response["results"][0]["plot"]["plotText"]["plainText"];
+            parasBot.innerText = plot;
+            messages.appendChild(parasBot);
+
+            scrollToBottom();
+            })
+        }
 
 /* Always see the latest message */
 function scrollToBottom() {
