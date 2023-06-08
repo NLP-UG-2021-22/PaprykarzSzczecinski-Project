@@ -70,10 +70,24 @@ let triggersWortWatching = ["worth", "watching", "recommend", "should i see it",
 let triggersBored = ["bored", "sad"]
 let triggersOk = ["ok", "sure"]
 let triggersThanks = ["thanks", "thank", "thx"]
-let triggersBye = ["goodbye", "bye", "see you", "see ya", "good night", "toodles"]
+let triggersBye = ["goodbye", "bye", "see you", "see ya", "good night", "toodles", "cheers"]
 let triggersPlot = ["plot", "summary", "description", "what is it about"]
 let triggersSentient = ["human", "alive", "sentient", "real"]
 let triggersWhyWorthWatching = ["why", "how so"]
+
+/* response option - goodbye*/
+let responseBye = [
+    "See ya!",
+    "Goodbye",
+    "You're leaving me? :(",
+    "Toodles!",
+    "Right.. bye",
+    "Bye bye!",
+    "Bye!",
+    "Go on now!",
+    "Cheers! :)"
+];
+let randomBye = responseBye[Math.floor(Math.random() * responseBye.length)];
 
 /* response option - the movie title is incorrect */
 let responseWrongTtile = [
@@ -167,15 +181,17 @@ document.addEventListener("DOMContentLoaded", () => {
                         } else {
                             if (triggersThanks.some(triggersThanks => messageValue.toLowerCase().includes(triggersThanks))) {
                                 let parasThanks = document.createElement("div");
-                                parasThanks.classList.add("bubble-bot")
+                                parasThanks.classList.add("bubble-bot");
+                                let randomThanks = responseThanks[Math.floor(Math.random() * responseThanks.length)];
                                 parasThanks.innerText = randomThanks;
                                 messages.appendChild(parasThanks);
                         } else {
                             if (triggersBye.some(triggersBye => messageValue.toLowerCase().includes(triggersBye))) {
                                 let parasBye = document.createElement("div");
                                 parasBye.classList.add("bubble-bot");
-                                parasBye.innerText = "Toodles!"
-                                messages.appendChild(parasBye)
+                                let randomBye = responseBye[Math.floor(Math.random() * responseBye.length)];
+                                parasBye.innerText = randomBye;
+                                messages.appendChild(parasBye);
                             
                         } else {
                             if (triggersPlot.some(triggersPlot => messageValue.toLowerCase().includes(triggersPlot))) {
@@ -184,6 +200,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             if (triggersSentient.some(triggersSentient => messageValue.toLowerCase().includes(triggersSentient))) {
                                 let parasSentient = document.createElement("div");
                                 parasSentient.classList.add("bubble-bot");
+                                let randomSentient = responsesSentient[Math.floor(Math.random() * responsesSentient.length)];
                                 parasSentient.innerText = randomSentient;
                                 messages.appendChild(parasSentient)
                         } else {
@@ -259,14 +276,16 @@ submitButton.onclick = function(event) {
                 } else {
                     if (triggersThanks.some(triggersThanks => messageValue.toLowerCase().includes(triggersThanks))) {
                         let parasThanks = document.createElement("div");
-                        parasThanks.classList.add("bubble-bot")
+                        parasThanks.classList.add("bubble-bot");
+                        let randomThanks = responseThanks[Math.floor(Math.random() * responseThanks.length)];
                         parasThanks.innerText = randomThanks;
                         messages.appendChild(parasThanks);
                 } else {
                     if (triggersBye.some(triggersBye => messageValue.toLowerCase().includes(triggersBye))) {
                         let parasBye = document.createElement("div");
                         parasBye.classList.add("bubble-bot");
-                        parasBye.innerText = "Toodles!"
+                        let randomBye = responseBye[Math.floor(Math.random() * responseBye.length)];
+                        parasBye.innerText = randomBye;
                         messages.appendChild(parasBye)
                     
                 } else {
@@ -276,6 +295,7 @@ submitButton.onclick = function(event) {
                     if (triggersSentient.some(triggersSentient => messageValue.toLowerCase().includes(triggersSentient))) {
                         let parasSentient = document.createElement("div");
                         parasSentient.classList.add("bubble-bot");
+                        let randomSentient = responsesSentient[Math.floor(Math.random() * responsesSentient.length)];
                         parasSentient.innerText = randomSentient;
                         messages.appendChild(parasSentient)
                 } else {
@@ -641,14 +661,18 @@ function getBechdelFromId() {
         fetch(urlMDB, options)
         .then(response => response.json())
         .then(response => {
+            let parasBot = document.createElement("div")
+            parasBot.classList.add("bubble-bot");
             
             try {
                 movieId = response["results"][0]["id"].slice(2,9);
                 getBechdel();
             } catch(err) {
+                let randomWrongTtile = responseWrongTtile[Math.floor(Math.random() * responseWrongTtile.length)];
                 parasBot.innerText = randomWrongTtile;
                 messages.append(parasBot)
-            }
+            } 
+            scrollToBottom();
         })
 }
 
