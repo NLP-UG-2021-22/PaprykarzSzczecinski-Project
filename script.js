@@ -90,10 +90,14 @@ let responseUnexpectedInput = [
     "I don't know what you are talking about.",
     "What are you talking about?",
     "What do you want me to do with that?",
-    "I don't want to talk about it"
+    "I don't want to talk about it",
+    "I don't understand...",
+    "Try typing something else",
+    "Gurl, stop playin",
+    "What...?",
+    "What does it mean....",
 ];
 
-let randomUnexpectedInput = responseUnexpectedInput[Math.floor(Math.random() * responseUnexpectedInput.length)];
 
 /*responses for thank you messages*/
 let responseThanks = [
@@ -188,7 +192,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         }
                          
 
-                 else /* if nothing fits - for now randomization doesn't work*/{
+                 else /* if nothing fits*/{
+                    let randomUnexpectedInput = responseUnexpectedInput[Math.floor(Math.random() * responseUnexpectedInput.length)];
                     let parasUnexpectedInput = document.createElement("div");
                         parasUnexpectedInput.classList.add("bubble-bot");
                         parasUnexpectedInput.innerText = randomUnexpectedInput;
@@ -279,7 +284,8 @@ submitButton.onclick = function(event) {
                 }
                  
 
-         else /* if nothing fits - for now randomization doesn't work*/{
+         else /* if nothing fits*/{
+            let randomUnexpectedInput = responseUnexpectedInput[Math.floor(Math.random() * responseUnexpectedInput.length)];
             let parasUnexpectedInput = document.createElement("div");
                 parasUnexpectedInput.classList.add("bubble-bot");
                 parasUnexpectedInput.innerText = randomUnexpectedInput;
