@@ -447,7 +447,7 @@ function isMovieWorthWatching(title) {
         convertedInput.push(word)
     }
     })
-    const movieTitle = convertedInput.join(' ')
+    const movieTitle = convertedInput.join(' ').trim()
 
     /* construct the url */
     urlMDB += movieTitle.replaceAll(' ', '%20') + '?exact=true&info=base_info&titleType=movie';
@@ -539,7 +539,7 @@ function whyWorthWatching() {
         convertedInput.push(word)
     }
     })
-    const titleInput = convertedInput.join(' ')
+    const titleInput = convertedInput.join(' ').trim()
 
     /* construct the url */
     urlMDB += titleInput.replaceAll(' ', '%20') + '?exact=true&info=base_info&titleType=movie';
@@ -584,7 +584,7 @@ function movieInfo() {
         convertedInput.push(word)
     }
     })
-    const titleInput = convertedInput.join(' ')
+    const titleInput = convertedInput.join(' ').trim()
 
     /* construct the url */
     urlMDB += titleInput.replaceAll(' ', '%20') + '?exact=true&info=base_info&titleType=movie';
@@ -646,7 +646,7 @@ function getBechdelFromId() {
         convertedInput.push(word)
     }
     })
-    const titleInput = convertedInput.join(' ')
+    const titleInput = convertedInput.join(' ').trim()
 
     /* construct the url */
     urlMDB += titleInput.replaceAll(' ', '%20') + '?exact=true&info=base_info&titleType=movie';
@@ -693,7 +693,7 @@ function getPlot() {
         convertedInput.push(word)
     }
     })
-    const titleInput = convertedInput.join(' ')
+    const titleInput = convertedInput.join(' ').trim()
 
     /* construct the url */
     urlMDB += titleInput.replaceAll(' ', '%20') + '?exact=true&info=base_info&titleType=movie';
