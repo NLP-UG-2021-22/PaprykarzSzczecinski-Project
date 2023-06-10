@@ -134,7 +134,7 @@ let randomSentient = responsesSentient[Math.floor(Math.random() * responsesSenti
 
 /*Bot welcome message*/
 let parasBot = document.createElement("div");
-parasBot.innerText = "Hi! Let me know what movie title you want to test. Please write ttl to indicate the title, tho. Thanks love."
+parasBot.innerText = "Hi! Let me know what movie you want to test. Please write ttl to indicate the title, tho. Thanks love."
 parasBot.classList.add("bubble-bot");
 messages.appendChild(parasBot)            
 
@@ -661,8 +661,18 @@ function getBechdelFromId() {
         fetch(urlMDB, options)
         .then(response => response.json())
         .then(response => {
-            let parasBot = document.createElement("div")
+
+            let parasBot = document.createElement("div");
             parasBot.classList.add("bubble-bot");
+
+            let loader = createLoader();
+            let parasBot1 = document.createElement("div");
+            parasBot1.classList.add("bubble-bot1")
+            parasBot1.appendChild(loader); // Append the loader element
+            messages.appendChild(parasBot1);
+            setTimeout(() => {
+                parasBot1.remove(loader);
+            },2000);
             
             try {
                 movieId = response["results"][0]["id"].slice(2,9);
@@ -670,7 +680,12 @@ function getBechdelFromId() {
             } catch(err) {
                 let randomWrongTtile = responseWrongTtile[Math.floor(Math.random() * responseWrongTtile.length)];
                 parasBot.innerText = randomWrongTtile;
-                messages.append(parasBot)
+                setTimeout(() => {
+                    messages.appendChild(parasBot);
+                    scrollToBottom();
+                }, 2000);
+                console.log("wrong title");
+
             } 
             scrollToBottom();
         })
@@ -723,4 +738,18 @@ function getPlot() {
 function scrollToBottom() {
     const messageScroll = document.querySelector('.messages');
     messageScroll.scrollTop = messageScroll.scrollHeight;
+  }
+
+/* Function to create loader */
+function createLoader() {
+    let loader = document.createElement('div');
+    loader.id = 'loader';
+    loader.classList.add("display");
+  
+    for (let i = 0; i < 4; i++) {
+      let dot = document.createElement('div');
+      loader.appendChild(dot);
+    }
+  
+    return loader;
   }
