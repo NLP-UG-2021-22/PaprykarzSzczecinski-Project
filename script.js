@@ -168,41 +168,99 @@ document.addEventListener("DOMContentLoaded", () => {
                             isMovieWorthWatching(title);
                     } else {
                         if (triggersBored.some(triggersBored => messageValue.toLowerCase().includes(triggersBored))) {
+                        setTimeout(() => {
                             let parasBored = document.createElement("div");
                             parasBored.classList.add("bubble-bot")
-                            parasBored.innerText = "You should watch a movie then. Come on, give me a title to test.";
-                            messages.appendChild(parasBored);
+                            let loader = createLoader();
+                            let parasBot1 = document.createElement("div");
+                            parasBot1.classList.add("bubble-bot1")
+                            parasBot1.appendChild(loader); 
+                            messages.appendChild(parasBot1);
+                            setTimeout (() => {
+                                parasBot1.remove(loader);
+                                parasBored.innerText = "You should watch a movie then. Come on, give me a title to test.";
+                                messages.appendChild(parasBored);
+                                scrollToBottom();
+                            }, 2500);
+                        }, 400);
                         } else {
                             if (triggersOk.some(triggersOk => messageValue.toLowerCase().includes(triggersOk))) {
+                            setTimeout(() => {
                               let parasOk = document.createElement("div");
                               parasOk.classList.add("bubble-bot");
-                              parasOk.innerText = "Ok.";
-                              messages.appendChild(parasOk);
+                              let loader = createLoader();
+                                let parasBot1 = document.createElement("div");
+                                parasBot1.classList.add("bubble-bot1")
+                                parasBot1.appendChild(loader); 
+                                messages.appendChild(parasBot1);
+                                setTimeout (() => {
+                                    parasBot1.remove(loader);
+                                    parasOk.innerText = "Ok.";
+                                    messages.appendChild(parasOk);
+                                    scrollToBottom();
+                                }, 1000)
+                                scrollToBottom();
+                            }, 150);
                         } else {
                             if (triggersThanks.some(triggersThanks => messageValue.toLowerCase().includes(triggersThanks))) {
+                            setTimeout(() => {
                                 let parasThanks = document.createElement("div");
                                 parasThanks.classList.add("bubble-bot");
-                                let randomThanks = responseThanks[Math.floor(Math.random() * responseThanks.length)];
-                                parasThanks.innerText = randomThanks;
-                                messages.appendChild(parasThanks);
+                                let loader = createLoader();
+                                let parasBot1 = document.createElement("div");
+                                parasBot1.classList.add("bubble-bot1")
+                                parasBot1.appendChild(loader); 
+                                messages.appendChild(parasBot1);
+                                setTimeout (() => {
+                                    parasBot1.remove(loader);
+                                    let randomThanks = responseThanks[Math.floor(Math.random() * responseThanks.length)];
+                                    parasThanks.innerText = randomThanks;
+                                    messages.appendChild(parasThanks);
+                                    scrollToBottom();
+                                }, 1500)
+                                scrollToBottom();
+                            }, 250);
                         } else {
                             if (triggersBye.some(triggersBye => messageValue.toLowerCase().includes(triggersBye))) {
+                            setTimeout(() => {
                                 let parasBye = document.createElement("div");
                                 parasBye.classList.add("bubble-bot");
-                                let randomBye = responseBye[Math.floor(Math.random() * responseBye.length)];
-                                parasBye.innerText = randomBye;
-                                messages.appendChild(parasBye);
-                            
+                                let loader = createLoader();
+                                let parasBot1 = document.createElement("div");
+                                parasBot1.classList.add("bubble-bot1")
+                                parasBot1.appendChild(loader); 
+                                messages.appendChild(parasBot1);
+                                setTimeout (() => {
+                                    parasBot1.remove(loader);
+                                    let randomBye = responseBye[Math.floor(Math.random() * responseBye.length)];
+                                    parasBye.innerText = randomBye;
+                                    messages.appendChild(parasBye);
+                                    scrollToBottom();
+                                }, 3000) 
+                                scrollToBottom();
+                            }, 350);  
                         } else {
                             if (triggersPlot.some(triggersPlot => messageValue.toLowerCase().includes(triggersPlot))) {
                                 getPlot(title);
                         } else {
                             if (triggersSentient.some(triggersSentient => messageValue.toLowerCase().includes(triggersSentient))) {
+                            setTimeout(() => {
                                 let parasSentient = document.createElement("div");
                                 parasSentient.classList.add("bubble-bot");
-                                let randomSentient = responsesSentient[Math.floor(Math.random() * responsesSentient.length)];
-                                parasSentient.innerText = randomSentient;
-                                messages.appendChild(parasSentient)
+                                let loader = createLoader();
+                                let parasBot1 = document.createElement("div");
+                                parasBot1.classList.add("bubble-bot1")
+                                parasBot1.appendChild(loader); 
+                                messages.appendChild(parasBot1);
+                                setTimeout (() => {
+                                    parasBot1.remove(loader);
+                                    let randomSentient = responsesSentient[Math.floor(Math.random() * responsesSentient.length)];
+                                    parasSentient.innerText = randomSentient;
+                                    messages.appendChild(parasSentient)
+                                    scrollToBottom();
+                                }, 3500);
+                                scrollToBottom();
+                            }, 400);
                         } else {
                             if (triggersWhyWorthWatching.some(triggersWhyWorthWatching => messageValue.toLowerCase().includes(triggersWhyWorthWatching))) {
                                 whyWorthWatching(title);
@@ -211,10 +269,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
                  else /* if nothing fits*/{
                     let randomUnexpectedInput = responseUnexpectedInput[Math.floor(Math.random() * responseUnexpectedInput.length)];
-                    let parasUnexpectedInput = document.createElement("div");
+                    setTimeout(() => {
+                        let parasUnexpectedInput = document.createElement("div");
                         parasUnexpectedInput.classList.add("bubble-bot");
-                        parasUnexpectedInput.innerText = randomUnexpectedInput;
-                        messages.appendChild(parasUnexpectedInput);
+                        let loader = createLoader();
+                        let parasBot1 = document.createElement("div");
+                        parasBot1.classList.add("bubble-bot1")
+                        parasBot1.appendChild(loader); 
+                        messages.appendChild(parasBot1);
+                        setTimeout (() => {
+                            parasBot1.remove(loader);
+                            parasUnexpectedInput.innerText = randomUnexpectedInput;
+                            messages.appendChild(parasUnexpectedInput);
+                            scrollToBottom();
+                        }, 1500);
+                        scrollToBottom();
+                    }, 100);
 
                 }
                 }
@@ -263,41 +333,101 @@ submitButton.onclick = function(event) {
                     isMovieWorthWatching(title);
             } else {
                 if (triggersBored.some(triggersBored => messageValue.toLowerCase().includes(triggersBored))) {
+                setTimeout(() => {
                     let parasBored = document.createElement("div");
                     parasBored.classList.add("bubble-bot")
-                    parasBored.innerText = "You should watch a movie then. Come on, give me a title to test.";
-                    messages.appendChild(parasBored);
+                    let loader = createLoader();
+                    let parasBot1 = document.createElement("div");
+                    parasBot1.classList.add("bubble-bot1")
+                    parasBot1.appendChild(loader); 
+                    messages.appendChild(parasBot1);
+                    setTimeout (() => {
+                        parasBot1.remove(loader);
+                        parasBored.innerText = "You should watch a movie then. Come on, give me a title to test.";
+                        messages.appendChild(parasBored);
+                        scrollToBottom();
+                    }, 2500);
+                    scrollToBottom();
+                }, 250);
                 } else {
                     if (triggersOk.some(triggersOk => messageValue.toLowerCase().includes(triggersOk))) {
-                      let parasOk = document.createElement("div");
-                      parasOk.classList.add("bubble-bot");
-                      parasOk.innerText = "Ok.";
-                      messages.appendChild(parasOk);
+                    setTimeout(() => {
+                        let parasOk = document.createElement("div");
+                        parasOk.classList.add("bubble-bot");
+                        let loader = createLoader();
+                        let parasBot1 = document.createElement("div");
+                        parasBot1.classList.add("bubble-bot1")
+                        parasBot1.appendChild(loader); 
+                        messages.appendChild(parasBot1);
+                        setTimeout (() => {
+                            parasBot1.remove(loader);
+                            parasOk.innerText = "Ok.";
+                            messages.appendChild(parasOk);
+                            scrollToBottom();
+                        }, 1000)
+                        scrollToBottom();
+                    }, 150);
                 } else {
                     if (triggersThanks.some(triggersThanks => messageValue.toLowerCase().includes(triggersThanks))) {
+                    setTimeout(() => {
                         let parasThanks = document.createElement("div");
                         parasThanks.classList.add("bubble-bot");
-                        let randomThanks = responseThanks[Math.floor(Math.random() * responseThanks.length)];
-                        parasThanks.innerText = randomThanks;
-                        messages.appendChild(parasThanks);
+                        let loader = createLoader();
+                        let parasBot1 = document.createElement("div");
+                        parasBot1.classList.add("bubble-bot1")
+                        parasBot1.appendChild(loader); 
+                        messages.appendChild(parasBot1);
+                        setTimeout (() => {
+                            parasBot1.remove(loader);
+                            let randomThanks = responseThanks[Math.floor(Math.random() * responseThanks.length)];
+                            parasThanks.innerText = randomThanks;
+                            messages.appendChild(parasThanks);
+                            scrollToBottom();
+                        }, 1500);
+                        scrollToBottom();
+                    }, 350);
                 } else {
                     if (triggersBye.some(triggersBye => messageValue.toLowerCase().includes(triggersBye))) {
+                    setTimeout(() => {
                         let parasBye = document.createElement("div");
                         parasBye.classList.add("bubble-bot");
-                        let randomBye = responseBye[Math.floor(Math.random() * responseBye.length)];
-                        parasBye.innerText = randomBye;
-                        messages.appendChild(parasBye)
+                        let loader = createLoader();
+                        let parasBot1 = document.createElement("div");
+                        parasBot1.classList.add("bubble-bot1")
+                        parasBot1.appendChild(loader); 
+                        messages.appendChild(parasBot1);
+                        setTimeout (() => {
+                            parasBot1.remove(loader);
+                            let randomBye = responseBye[Math.floor(Math.random() * responseBye.length)];
+                            parasBye.innerText = randomBye;
+                            messages.appendChild(parasBye);
+                            scrollToBottom();
+                        }, 3000);
+                        scrollToBottom();
+                    }, 400);
                     
                 } else {
                     if (triggersPlot.some(triggersPlot => messageValue.toLowerCase().includes(triggersPlot))) {
                         getPlot(title);
                 } else {
                     if (triggersSentient.some(triggersSentient => messageValue.toLowerCase().includes(triggersSentient))) {
+                    setTimeout(() => {
                         let parasSentient = document.createElement("div");
                         parasSentient.classList.add("bubble-bot");
-                        let randomSentient = responsesSentient[Math.floor(Math.random() * responsesSentient.length)];
-                        parasSentient.innerText = randomSentient;
-                        messages.appendChild(parasSentient)
+                        let loader = createLoader();
+                        let parasBot1 = document.createElement("div");
+                        parasBot1.classList.add("bubble-bot1")
+                        parasBot1.appendChild(loader); 
+                        messages.appendChild(parasBot1);
+                        setTimeout (() => {
+                            parasBot1.remove(loader);
+                            let randomSentient = responsesSentient[Math.floor(Math.random() * responsesSentient.length)];
+                            parasSentient.innerText = randomSentient;
+                            messages.appendChild(parasSentient)
+                            scrollToBottom();
+                        }, 3500);
+                        scrollToBottom();
+                    }, 350);
                 } else {
                     if (triggersWhyWorthWatching.some(triggersWhyWorthWatching => messageValue.toLowerCase().includes(triggersWhyWorthWatching))) {
                         whyWorthWatching(title);
@@ -306,10 +436,22 @@ submitButton.onclick = function(event) {
 
          else /* if nothing fits*/{
             let randomUnexpectedInput = responseUnexpectedInput[Math.floor(Math.random() * responseUnexpectedInput.length)];
-            let parasUnexpectedInput = document.createElement("div");
-                parasUnexpectedInput.classList.add("bubble-bot");
-                parasUnexpectedInput.innerText = randomUnexpectedInput;
-                messages.appendChild(parasUnexpectedInput);
+                    setTimeout(() => {
+                        let parasUnexpectedInput = document.createElement("div");
+                        parasUnexpectedInput.classList.add("bubble-bot");
+                        let loader = createLoader();
+                        let parasBot1 = document.createElement("div");
+                        parasBot1.classList.add("bubble-bot1")
+                        parasBot1.appendChild(loader); 
+                        messages.appendChild(parasBot1);
+                        setTimeout (() => {
+                            parasBot1.remove(loader);
+                            parasUnexpectedInput.innerText = randomUnexpectedInput;
+                            messages.appendChild(parasUnexpectedInput);
+                            scrollToBottom();
+                        }, 1500);
+                        scrollToBottom();
+                    }, 100);
 
         }
         }
@@ -463,7 +605,17 @@ function isMovieWorthWatching(title) {
             let parasBot = document.createElement("div")
             parasBot.classList.add("bubble-bot");
 
+            let loader = createLoader();
+            let parasBot1 = document.createElement("div");
+            parasBot1.classList.add("bubble-bot1")
+            parasBot1.appendChild(loader); // Append the loader element
+            messages.appendChild(parasBot1);
+            setTimeout(() => {
+                parasBot1.remove(loader);
+            },2500);
+
             /* response option - the movie is worth watching */
+        setTimeout(() => {
             let responseWorthWatching = [
                 "Yes! You won't regret it!",
                 "Yes!! This movie is a big slay!",
@@ -517,6 +669,8 @@ function isMovieWorthWatching(title) {
                 messages.appendChild(parasBot);
             }
             scrollToBottom();
+        }, 2500);
+        scrollToBottom();
         })
 }
 
@@ -553,12 +707,23 @@ function whyWorthWatching() {
             let parasBot = document.createElement("div")
             parasBot.classList.add("bubble-bot");
 
+            let loader = createLoader();
+            let parasBot1 = document.createElement("div");
+            parasBot1.classList.add("bubble-bot1")
+            parasBot1.appendChild(loader); // Append the loader element
+            messages.appendChild(parasBot1);
+            setTimeout(() => {
+                parasBot1.remove(loader);
+            },1500);
+        setTimeout (() => {
             let rating = response["results"][0]["ratingsSummary"]["aggregateRating"];
             parasBot.innerText = `The rating is literally ${rating}.`;
             messages.appendChild(parasBot);
 
             scrollToBottom();
-            })
+            }, 1500);
+        scrollToBottom();
+        })
         }
 
 /* function to obtain information about the movie with the use of Movie Data Base API */
@@ -596,6 +761,15 @@ function movieInfo() {
             let parasBot = document.createElement("div")
             parasBot.classList.add("bubble-bot");
 
+            let loader = createLoader();
+            let parasBot1 = document.createElement("div");
+            parasBot1.classList.add("bubble-bot1")
+            parasBot1.appendChild(loader); // Append the loader element
+            messages.appendChild(parasBot1);
+            setTimeout(() => {
+                parasBot1.remove(loader);
+            },2500);
+        setTimeout(() => {
             try {
             let title = response["results"][0]["originalTitleText"]["text"];
             let releaseYear = response["results"][0]["releaseYear"]["year"];
@@ -619,7 +793,10 @@ function movieInfo() {
             console.log(response);
         }
         scrollToBottom();
-        })
+    }, 2500);
+    scrollToBottom();
+})
+        
 }
 
 /* function for running Bechdel with the Id from IMDB*/
