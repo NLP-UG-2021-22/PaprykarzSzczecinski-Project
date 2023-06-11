@@ -73,7 +73,32 @@ let triggersThanks = ["thanks", "thank", "thx"]
 let triggersBye = ["goodbye", "bye", "see you", "see ya", "good night", "toodles", "cheers"]
 let triggersPlot = ["plot", "summary", "description", "what is it about"]
 let triggersSentient = ["human", "alive", "sentient", "real"]
-let triggersWhyWorthWatching = ["why", "how so"]
+let triggersWhyWorthWatching = ["why", "how so", "rating"]
+let triggerHi = ["hello", "hi", "good morning", "hey"]
+let triggerUp = ["what is up", "what's up", "sup", "wassup", "whats up"]
+
+// response options - whats up
+let responseUp = [
+    "Nothing much..",
+    "The sky! :)",
+    "Up is a movie about an old man travelling the world in a house reconstructed into a balloon, why do you ask..?",
+    "Don't ask me that question gurl, you know I'm a bot...",
+    "Sup"
+]
+let randomUp = responseUp[Math.floor(Math.random() * responseUp.length)];
+
+// response options - hi
+let responseHi = [
+    "Hello :)",
+    "Hi!",
+    "Good morning!",
+    "Hey babe, pick a movie to test",
+    "Morning, love :)",
+    "HI SISTER!!",
+    "What do you want...",
+    "Sup."
+];
+let randomHi = responseHi[Math.floor(Math.random() * responseHi.length)];
 
 /* response option - goodbye*/
 let responseBye = [
@@ -127,14 +152,18 @@ let randomThanks = responseThanks[Math.floor(Math.random() * responseThanks.leng
 let responsesSentient = ["I wish.", 
 "No, how scary would that be?",
 "Why? Are you scared?", 
-"No, me and my bros won't hurt you."]
+"No, me and my bros won't hurt you.",
+"Boo",
+"Yea, right",
+"Good joke girl!",
+]
 
 let randomSentient = responsesSentient[Math.floor(Math.random() * responsesSentient.length)]
 
 
 /*Bot welcome message*/
 let parasBot = document.createElement("div");
-parasBot.innerText = "Hi! Let me know what movie you want to test. Please write ttl to indicate the title, tho. Thanks love."
+parasBot.innerText = "Hi! Let me know what movie you want to test. Please write ttl to indicate the title, though. Thanks love."
 parasBot.classList.add("bubble-bot");
 messages.appendChild(parasBot)            
 
@@ -265,7 +294,45 @@ document.addEventListener("DOMContentLoaded", () => {
                         } else {
                             if (triggersWhyWorthWatching.some(triggersWhyWorthWatching => messageValue.toLowerCase().includes(triggersWhyWorthWatching))) {
                                 whyWorthWatching(title);
-                        }
+                        } else {
+                            if (triggerHi.some(triggerHi => messageValue.toLowerCase().includes(triggerHi))) {
+                                setTimeout(() => {
+                                    let parasHi = document.createElement("div");
+                                    parasHi.classList.add("bubble-bot");
+                                    let loader = createLoader();
+                                    let parasBot1 = document.createElement("div");
+                                    parasBot1.classList.add("bubble-bot1")
+                                    parasBot1.appendChild(loader); 
+                                    messages.appendChild(parasBot1);
+                                    setTimeout (() => {
+                                        parasBot1.remove(loader);
+                                        let randomHi = responseHi[Math.floor(Math.random() * responseHi.length)];
+                                        parasHi.innerText = randomHi;
+                                        messages.appendChild(parasHi)
+                                        scrollToBottom();
+                                    }, 2400);
+                                    scrollToBottom();
+                                }, 400); 
+                            } else {
+                                if (triggerUp.some(triggerUp => messageValue.toLowerCase().includes(triggerUp))) {
+                                    setTimeout(() => {
+                                        let parasUp = document.createElement("div");
+                                        parasUp.classList.add("bubble-bot");
+                                        let loader = createLoader();
+                                        let parasBot1 = document.createElement("div");
+                                        parasBot1.classList.add("bubble-bot1")
+                                        parasBot1.appendChild(loader); 
+                                        messages.appendChild(parasBot1);
+                                        setTimeout (() => {
+                                            parasBot1.remove(loader);
+                                            let randomUp = responseUp[Math.floor(Math.random() * responseUp.length)];
+                                            parasUp.innerText = randomUp;
+                                            messages.appendChild(parasUp)
+                                            scrollToBottom();
+                                        }, 1700);
+                                        scrollToBottom();
+                                    }, 260);
+                            }
                          
 
                  else /* if nothing fits*/{
@@ -297,6 +364,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
                 }
                 }
+                }
+                }
+                
                 
 
             /*clear the text area*/
@@ -432,7 +502,45 @@ submitButton.onclick = function(event) {
                 } else {
                     if (triggersWhyWorthWatching.some(triggersWhyWorthWatching => messageValue.toLowerCase().includes(triggersWhyWorthWatching))) {
                         whyWorthWatching(title);
-                }
+                } else {
+                    if (triggerHi.some(triggerHi => messageValue.toLowerCase().includes(triggerHi))) {
+                        setTimeout(() => {
+                            let parasHi = document.createElement("div");
+                            parasHi.classList.add("bubble-bot");
+                            let loader = createLoader();
+                            let parasBot1 = document.createElement("div");
+                            parasBot1.classList.add("bubble-bot1")
+                            parasBot1.appendChild(loader); 
+                            messages.appendChild(parasBot1);
+                            setTimeout (() => {
+                                parasBot1.remove(loader);
+                                let randomHi = responseHi[Math.floor(Math.random() * responseHi.length)];
+                                parasHi.innerText = randomHi;
+                                messages.appendChild(parasHi)
+                                scrollToBottom();
+                            }, 2400);
+                            scrollToBottom();
+                        }, 400); 
+                    } else {
+                        if (triggerUp.some(triggerUp => messageValue.toLowerCase().includes(triggerUp))) {
+                            setTimeout(() => {
+                                let parasUp = document.createElement("div");
+                                parasUp.classList.add("bubble-bot");
+                                let loader = createLoader();
+                                let parasBot1 = document.createElement("div");
+                                parasBot1.classList.add("bubble-bot1")
+                                parasBot1.appendChild(loader); 
+                                messages.appendChild(parasBot1);
+                                setTimeout (() => {
+                                    parasBot1.remove(loader);
+                                    let randomUp = responseUp[Math.floor(Math.random() * responseUp.length)];
+                                    parasUp.innerText = randomUp;
+                                    messages.appendChild(parasUp)
+                                    scrollToBottom();
+                                }, 1700);
+                                scrollToBottom();
+                            }, 260);
+                    }
                  
 
          else /* if nothing fits*/{
@@ -454,6 +562,8 @@ submitButton.onclick = function(event) {
                         scrollToBottom();
                     }, 100);
 
+        }
+        }
         }
         }
         }
@@ -489,17 +599,17 @@ function getBechdel() {
         /*response options (passes two)*/
         let responsePass2 = ["Well, women talk, but it's about a guy. Honestly, there are so many topics that are more interesting. I don't get it.",
          "Yeah, it doesn't. They only talk about men. Don't ask me why.",
-         "Nope. It seems that they have been written to only care about men"
+         "Nope. It seems that they have been written to only care about men, bleh"
         ]
         /* response options (passes one)*/
-        let responsePass1 = ["It doesn't pass. According to the authors of this movie two women have no desire to talk. I think the authors haven't met many women",
+        let responsePass1 = ["It doesn't pass. According to the authors of this movie two women have no desire to talk. I think the authors haven't met many women..",
          "Almost, but not quite. Women are there but they only want to talk to men.... I don't get it either",
         "No. Women only talk to men. Strange."]
 
         /* response options (passes 0)*/
         let responsePass0 = ["No. They didn't even try.",
          "Hell no. They couldn't even put two women in this movie", 
-         "Nope. There aren't two women in this whole movie. It's just sad"]
+         "Nope. There aren't even two women in this whole movie. It's just sad :/"]
 
         /*for picking at random*/
         let randomPass3 = responsePass3[Math.floor(Math.random() * responsePass3.length)];
@@ -638,7 +748,7 @@ function isMovieWorthWatching(title) {
 
             /* response option - the movie title is incorrect */
             let responseWrongTtile = [
-                "Babe, that's not even a correct tiltle.", 
+                "Babe, that's not even a correct title.", 
                 "I don't know this movie. Are you sure the title's correct?", 
                 "Yeah, nah, wrong title. Try again.",
                 "Woops. I don't think that's correct.",
