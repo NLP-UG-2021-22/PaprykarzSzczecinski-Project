@@ -433,24 +433,22 @@ function isMovieWorthWatching(title) {
     let urlMDB = url2;
 
     /* convert input to title case */
-    const lowerInputString = title.toLowerCase();
-    const splitInput = lowerInputString.split(' ');
-    const convertedInput = []
-    splitInput.forEach((word, index) => {
-        if (index === 0) {
-            convertedInput.push(word[0].toUpperCase() + word.slice(1))
-        return
-    }
-    if (word.length > 3) {
-        convertedInput.push(word[0].toUpperCase() + word.slice(1))
-    } else {
-        convertedInput.push(word)
-    }
-    })
-    const movieTitle = convertedInput.join(' ').trim()
+    const titleCase = function (title) {
+        const exceptions = ["a","an","the","and","at","but","by","for","nor","of","on","or","so","to","in"];
+        const titleCase = title
+          .toLowerCase()
+          .split(" ")
+          .map(word =>
+            exceptions.includes(word) ? word : word[0].toUpperCase() + word.slice(1)
+          )
+          .join(" ");
+        return titleCase[0].toUpperCase() + titleCase.slice(1);;
+      };
+      
+      const titleInput = titleCase(title).trim();
 
     /* construct the url */
-    urlMDB += movieTitle.replaceAll(' ', '%20') + '?exact=true&info=base_info&titleType=movie';
+    urlMDB += titleInput.replaceAll(' ', '%20') + '?exact=true&info=base_info&titleType=movie';
         console.log(urlMDB)
         const options = {
             method: 'GET',
@@ -525,21 +523,19 @@ function isMovieWorthWatching(title) {
 function whyWorthWatching() {
     let urlMDB = url2;
     /* convert input to title case */
-    const lowerInputString = title.toLowerCase();
-    const splitInput = lowerInputString.split(' ');
-    const convertedInput = []
-    splitInput.forEach((word, index) => {
-        if (index === 0) {
-            convertedInput.push(word[0].toUpperCase() + word.slice(1))
-        return
-    }
-    if (word.length > 3) {
-        convertedInput.push(word[0].toUpperCase() + word.slice(1))
-    } else {
-        convertedInput.push(word)
-    }
-    })
-    const titleInput = convertedInput.join(' ').trim()
+    const titleCase = function (title) {
+        const exceptions = ["a","an","the","and","at","but","by","for","nor","of","on","or","so","to","in"];
+        const titleCase = title
+          .toLowerCase()
+          .split(" ")
+          .map(word =>
+            exceptions.includes(word) ? word : word[0].toUpperCase() + word.slice(1)
+          )
+          .join(" ");
+        return titleCase[0].toUpperCase() + titleCase.slice(1);;
+      };
+      
+      const titleInput = titleCase(title).trim();
 
     /* construct the url */
     urlMDB += titleInput.replaceAll(' ', '%20') + '?exact=true&info=base_info&titleType=movie';
@@ -570,21 +566,19 @@ function movieInfo() {
     let urlMDB = url2;
 
     /* convert input to title case */
-    const lowerInputString = title.toLowerCase();
-    const splitInput = lowerInputString.split(' ');
-    const convertedInput = []
-    splitInput.forEach((word, index) => {
-        if (index === 0) {
-            convertedInput.push(word[0].toUpperCase() + word.slice(1))
-        return
-    }
-    if (word.length > 3) {
-        convertedInput.push(word[0].toUpperCase() + word.slice(1))
-    } else {
-        convertedInput.push(word)
-    }
-    })
-    const titleInput = convertedInput.join(' ').trim()
+    const titleCase = function (title) {
+        const exceptions = ["a","an","the","and","at","but","by","for","nor","of","on","or","so","to","in"];
+        const titleCase = title
+          .toLowerCase()
+          .split(" ")
+          .map(word =>
+            exceptions.includes(word) ? word : word[0].toUpperCase() + word.slice(1)
+          )
+          .join(" ");
+        return titleCase[0].toUpperCase() + titleCase.slice(1);;
+      };
+      
+      const titleInput = titleCase(title).trim();
 
     /* construct the url */
     urlMDB += titleInput.replaceAll(' ', '%20') + '?exact=true&info=base_info&titleType=movie';
@@ -632,21 +626,19 @@ function movieInfo() {
 function getBechdelFromId() {
     let urlMDB = url2;
     /* convert input to title case */
-    const lowerInputString = title.toLowerCase();
-    const splitInput = lowerInputString.split(' ');
-    const convertedInput = []
-    splitInput.forEach((word, index) => {
-        if (index === 0) {
-            convertedInput.push(word[0].toUpperCase() + word.slice(1))
-        return
-    }
-    if (word.length > 3) {
-        convertedInput.push(word[0].toUpperCase() + word.slice(1))
-    } else {
-        convertedInput.push(word)
-    }
-    })
-    const titleInput = convertedInput.join(' ').trim()
+    const titleCase = function (title) {
+        const exceptions = ["a","an","the","and","at","but","by","for","nor","of","on","or","so","to","in"];
+        const titleCase = title
+          .toLowerCase()
+          .split(" ")
+          .map(word =>
+            exceptions.includes(word) ? word : word[0].toUpperCase() + word.slice(1)
+          )
+          .join(" ");
+        return titleCase[0].toUpperCase() + titleCase.slice(1);;
+      };
+      
+      const titleInput = titleCase(title).trim();
 
     /* construct the url */
     urlMDB += titleInput.replaceAll(' ', '%20') + '?exact=true&info=base_info&titleType=movie';
@@ -694,21 +686,19 @@ function getBechdelFromId() {
 function getPlot() {
     let urlMDB = url2;
     /* convert input to title case */
-    const lowerInputString = title.toLowerCase();
-    const splitInput = lowerInputString.split(' ');
-    const convertedInput = []
-    splitInput.forEach((word, index) => {
-        if (index === 0) {
-            convertedInput.push(word[0].toUpperCase() + word.slice(1))
-        return
-    }
-    if (word.length > 3) {
-        convertedInput.push(word[0].toUpperCase() + word.slice(1))
-    } else {
-        convertedInput.push(word)
-    }
-    })
-    const titleInput = convertedInput.join(' ').trim()
+    const titleCase = function (title) {
+        const exceptions = ["a","an","the","and","at","but","by","for","nor","of","on","or","so","to","in"];
+        const titleCase = title
+          .toLowerCase()
+          .split(" ")
+          .map(word =>
+            exceptions.includes(word) ? word : word[0].toUpperCase() + word.slice(1)
+          )
+          .join(" ");
+        return titleCase[0].toUpperCase() + titleCase.slice(1);;
+      };
+      
+      const titleInput = titleCase(title).trim();
 
     /* construct the url */
     urlMDB += titleInput.replaceAll(' ', '%20') + '?exact=true&info=base_info&titleType=movie';
