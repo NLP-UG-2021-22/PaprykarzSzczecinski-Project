@@ -400,7 +400,7 @@ function getBechdel() {
             }
 
         } else {
-        parasBot.innerText = randomWrongTtile;
+        parasBot.innerText = "Sorry. I didn't watch this movie yet, so I don't know if it passes. If you want, I can tell you some basic information or the plot. That's the best I can do.";
         messages.appendChild(parasBot);
         }
 
