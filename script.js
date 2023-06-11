@@ -116,7 +116,7 @@ let randomBye = responseBye[Math.floor(Math.random() * responseBye.length)];
 
 /* response option - the movie title is incorrect */
 let responseWrongTtile = [
-                "Babe, that's not even a correct tiltle.", 
+                "Babe, that's not even a correct title.", 
                 "I don't know this movie. Are you sure the title's correct?", 
                 "Yeah, nah, wrong title. Try again.",
                 "Woops. I don't think that's correct.",
