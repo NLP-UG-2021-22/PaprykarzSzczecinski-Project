@@ -893,12 +893,24 @@ function getPlot() {
             let parasBot = document.createElement("div")
             parasBot.classList.add("bubble-bot");
 
+            let loader = createLoader();
+            let parasBot1 = document.createElement("div");
+            parasBot1.classList.add("bubble-bot1")
+            parasBot1.appendChild(loader); // Append the loader element
+            messages.appendChild(parasBot1);
+            setTimeout(() => {
+                parasBot1.remove(loader);
+            },3000);
+            
+        setTimeout(() => {
             let plot = response["results"][0]["plot"]["plotText"]["plainText"];
             parasBot.innerText = plot;
             messages.appendChild(parasBot);
 
             scrollToBottom();
-            })
+            }, 3000);
+        scrollToBottom();
+        })
         }
 
 /* Always see the latest message */
