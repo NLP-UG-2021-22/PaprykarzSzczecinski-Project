@@ -182,6 +182,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                 messages.appendChild(parasBored);
                                 scrollToBottom();
                             }, 2500);
+                            scrollToBottom();
                         }, 400);
                         } else {
                             if (triggersOk.some(triggersOk => messageValue.toLowerCase().includes(triggersOk))) {
@@ -347,8 +348,8 @@ submitButton.onclick = function(event) {
                         messages.appendChild(parasBored);
                         scrollToBottom();
                     }, 2500);
-                    scrollToBottom();
-                }, 250);
+                scrollToBottom();
+                }, 400);
                 } else {
                     if (triggersOk.some(triggersOk => messageValue.toLowerCase().includes(triggersOk))) {
                     setTimeout(() => {
